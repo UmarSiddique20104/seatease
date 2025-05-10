@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../output.css" />
+    <title>Event Table 1</title>
+    <style>
+      .table-container {
+        width: 100%;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+
+      /* Responsive styles */
+      /* @media screen and (max-width: 767px) {
+        table {
+          border: 0;
+          width: 100%;
+        }
+        thead {
+          display: none;
+        }
+        tr {
+          display: block;
+          margin-bottom: 10px;
+        }
+        td {
+          display: block;
+          text-align: right;
+          position: relative;
+          padding-left: 130px !important;
+        }
+        td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 120px;
+          padding-left: 10px;
+          font-weight: bold;
+          text-align: left;
+        }
+      } */
+      th {
+        position: relative;
+        padding: 20px; /* Adjust padding as necessary */
+      }
+      th:not(:first-child)::before {
+        content: "";
+        position: absolute;
+        top: 50%; /* Position it in the middle */
+        left: 0;
+        bottom: 0;
+        width: 1px; /* Width of the border */
+        height: 50%; /* Height of the border, adjust as needed */
+        background-color: white; /* Border color */
+        transform: translateY(-50%); /* Center it vertically */
+      }
+      .hidden {
+        display: none;
+      }
+    </style> 
+  </head>
+  <body class="min-h-full">
+    <div
+      class="relative h-full min-h-svh  overflow-hidden pb-10 bg-[#24205A] backdrop-brightness-50"
+    >
+      <div
+        class="absolute top-0 left-0 w-1/2 h-full bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-10"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-1/2 h-full rotate-180 bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-10"
+      ></div>
+      <div class="font-Poppins relative z-20">
+        <nav
+        class="py-[20px] flex justify-between items-center max-md:flex-col max-lg:px-[40px] lg:px-[80px]"
+      >
+        <div class="z-50 cursor-pointer">
+          <a href="./Dashboard.html"><img src="../../src/assests/Logo.png" alt="" /></a>
+        </div>
+        <div class="flex items-center gap-[30px]">
+          <div>
+            <ul class="flex items-center gap-[30px]">
+              <li class="font-medium text-xl text-white z-20">
+                <a href="./Events.html">Events</a>
+              </li>
+              <li class="font-medium text-xl text-white">Orders</li>
+            </ul>
+          </div>
+
+          <div class="flex items-center gap-[8px]">
+            <div class="min-h-10 min-w-10">
+              <img src="../../src/assests/Ellipse 18.png" alt="profile"  class="h-full w-full object-cover"/>
+            </div>
+            <div>
+              <div class="py-1">
+                <p class="font-semibold text-white text-[16px] leading-none">
+                  Tynisha Obey
+                </p>
+              </div>
+              <div class="py-1">
+                <p class="font-normal text-white text-[14px] leading-none">
+                  KATRING
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      </div>
+      <div class="h-full px-10 max-sm:px-5 w-full font-Poppins">
+        <div class="w-full h-full rounded-[40px] bg-white py-8 max-sm:py-8 max-sm:px-2 px-8">
+          <div
+            class="w-full flex flex-row max-lg:flex-col gap-4 h-full relative z-20 bg-transparent"
+          >    
+            <!-- left  -->
+            <div class="w-[100%] flex flex-col gap-[20px] max-lg:w-full font-Poppins">
+              <div class="flex  max-sm:flex-col w-full  items-center  gap-[14px] max-sm:gap-[7px] font-Poppins">
+                <div class="flex  max-sm:w-full ">
+                  <svg
+                    class="cursor-pointer"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="45"
+                    height="45"
+                    viewBox="0 0 45 45"
+                    fill="none"
+                  >
+                    <path
+                      opacity="0.35"
+                      d="M22.5 41.25C32.8553 41.25 41.25 32.8553 41.25 22.5C41.25 12.1447 32.8553 3.75 22.5 3.75C12.1447 3.75 3.75 12.1447 3.75 22.5C3.75 32.8553 12.1447 41.25 22.5 41.25Z"
+                      fill="#949CA9"
+                    />
+                    <path
+                      d="M15 24.375C15 24.375 31.2225 24.375 31.875 24.375C32.91 24.375 33.75 23.535 33.75 22.5C33.75 21.465 32.91 20.625 31.875 20.625C31.2225 20.625 15 20.625 15 20.625V24.375Z"
+                      fill="#949CA9"
+                    />
+                    <path
+                      d="M22.5005 31.875C22.0205 31.875 21.5405 31.6913 21.1748 31.3256L13.6748 23.8256C12.9417 23.0925 12.9417 21.9075 13.6748 21.1744L21.1748 13.6744C21.908 12.9413 23.093 12.9413 23.8261 13.6744C24.5592 14.4075 24.5592 15.5925 23.8261 16.3256L17.6517 22.5L23.8261 28.6744C24.5592 29.4075 24.5592 30.5925 23.8261 31.3256C23.4605 31.6913 22.9805 31.875 22.5005 31.875Z"
+                      fill="#949CA9"
+                    />
+                  </svg>
+                </div>
+                <div class="flex  max-sm:flex-col gap-[14px] w-full items-center max-sm:gap-[7px] "><div class="text-[32px]  font-semibold">Create Event</div>
+                <ol class="flex items-center justify-center w-[20%]  max-sm:w-[100%]  ">
+                    <li
+                    class="flex w-[55%] h-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block after:border-[#6fc176]"
+                  >
+                  <li
+                    class="flex w-full h-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block after:border-[#6fc176]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-1 rounded-full bg-[#6fc176] shrink-0"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class=""
+                        x="0px"
+                        y="0px"
+                        width="18"
+                        height="18"
+                        viewBox="0,0,256,256"
+                        style="fill: #000000"
+                      >
+                        <g
+                          fill="#fdffff"
+                          fill-rule="nonzero"
+                          stroke="none"
+                          stroke-width="1"
+                          stroke-linecap="butt"
+                          stroke-linejoin="miter"
+                          stroke-miterlimit="10"
+                          stroke-dasharray=""
+                          stroke-dashoffset="0"
+                          font-family="none"
+                          font-weight="none"
+                          font-size="none"
+                          text-anchor="none"
+                          style="mix-blend-mode: normal"
+                        >
+                          <g transform="scale(10.66667,10.66667)">
+                            <path
+                              d="M20.29297,5.29297l-11.29297,11.29297l-4.29297,-4.29297l-1.41406,1.41406l5.70703,5.70703l12.70703,-12.70703z"
+                            ></path>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                  </li>
+                </li>
+                  <li
+                    class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block after:border-[#e8e9ea]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-1 rounded-full bg-[#e8e9ea] shrink-0"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        x="0px"
+                        y="0px"
+                        width="18"
+                        height="18"
+                        viewBox="0,0,256,256"
+                        style="fill: #000000"
+                      >
+                        <g
+                          fill="#fdffff"
+                          fill-rule="nonzero"
+                          stroke="none"
+                          stroke-width="1"
+                          stroke-linecap="butt"
+                          stroke-linejoin="miter"
+                          stroke-miterlimit="10"
+                          stroke-dasharray=""
+                          stroke-dashoffset="0"
+                          font-family="none"
+                          font-weight="none"
+                          font-size="none"
+                          text-anchor="none"
+                          style="mix-blend-mode: normal"
+                        >
+                          <g transform="scale(10.66667,10.66667)">
+                            <path
+                              d="M20.29297,5.29297l-11.29297,11.29297l-4.29297,-4.29297l-1.41406,1.41406l5.70703,5.70703l12.70703,-12.70703z"
+                            ></path>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="flex items-center w-full">
+                    <div
+                      class="flex items-center justify-center p-1 rounded-full bg-[#e8e9ea] shrink-0"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        x="0px"
+                        y="0px"
+                        width="18"
+                        height="18"
+                        viewBox="0,0,256,256"
+                        style="fill: #000000"
+                      >
+                        <g
+                          fill="#fdffff"
+                          fill-rule="nonzero"
+                          stroke="none"
+                          stroke-width="1"
+                          stroke-linecap="butt"
+                          stroke-linejoin="miter"
+                          stroke-miterlimit="10"
+                          stroke-dasharray=""
+                          stroke-dashoffset="0"
+                          font-family="none"
+                          font-weight="none"
+                          font-size="none"
+                          text-anchor="none"
+                          style="mix-blend-mode: normal"
+                        >
+                          <g transform="scale(10.66667,10.66667)">
+                            <path
+                              d="M20.29297,5.29297l-11.29297,11.29297l-4.29297,-4.29297l-1.41406,1.41406l5.70703,5.70703l12.70703,-12.70703z"
+                            ></path>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                  </li>
+                </ol></div>
+              </div>  
+              <div
+                class="relative  overflow-x-auto shadow-md  sm:rounded-lg"
+              >
+                <div class="">
+                  <table
+                    class="w-full text-sm text-left rounded-t-[12px]  font-Poppins rtl:text-right  text-gray-500 dark:text-gray-400"
+                  >
+                    <thead
+                      class="text-[14px]  font-normal  text-white font-Poppins "
+                    >
+                      <tr class=" bg-[#5461AC]  rounded-t-[18px]">
+                        <th scope="col" class="px-3 rounded-l-[12px] py-3 font-medium">
+                          Event Name
+                        </th>
+                        <th scope="col" class="px-3 py-3 font-medium">Venue</th>
+                       
+                        <th scope="col" class="px-3 py-3 font-medium">
+                          Tickets
+                        </th>
+                        <th scope="col" class="px-3 py-3 font-medium">Listing</th>
+                        <th scope="col" class="px-3 py-3 font-medium  rounded-r-[12px]">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b dark:border-gray-200">
+                        <td
+                          data-label="Event Name"
+                          class="px-3 py-3 font-medium text-gray-900 whitespace-nowrap"
+                        >
+                        Community Shield 2024 - Manchester City FC vs Manchester United
+                        </td>
+                        <td data-label="Venue" class="px-3 py-3 text-gray-900 font-medium">Anfield</td>
+                        <td data-label="Tickets" class="px-3 py-3 text-gray-900 font-medium  " >
+                          <div class="flex gap-1">
+                            <span class="text-[#5461AC]">8</span> Tickets
+                          </div>
+                          
+                        </td>
+                        <td data-label="Costs" class="px-3 py-3 text-gray-900 font-medium">£2,490.00</td>
+                        <td data-label="Date" class="px-3 py-3 text-gray-900 font-medium">
+                          <div
+                            class="justify-evenly flex flex-row max-md:flex-row md:items-center max-md:items-end gap-2"
+                          >
+                            11/08/24
+                            <button
+                              class="arrow-btn  cursor-pointer w-fit gap-1 text-white font-normal rounded inline-flex items-center"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                <path opacity="0.35" d="M16.0419 22.9167H8.95857C7.39607 22.9167 6.04191 21.7708 5.83357 20.2083L4.27107 7.08333C4.16691 6.66667 4.58357 6.25 5.00024 6.25H20.1044C20.5211 6.25 20.8336 6.66667 20.8336 7.08333L19.1669 20.2083C18.8544 21.7708 17.6044 22.9167 16.0419 22.9167Z" fill="#DA1E28"/>
+                                <path d="M16.6663 4.16668H8.33301V3.12501C8.33301 2.50001 8.74967 2.08334 9.37467 2.08334H15.6247C16.2497 2.08334 16.6663 2.50001 16.6663 3.12501V4.16668Z" fill="#DA1E28"/>
+                                <path d="M19.7917 3.125C19.1667 3.125 5.83333 3.125 5.20833 3.125C4.0625 3.125 3.125 4.0625 3.125 5.20833C3.125 6.35417 4.0625 7.29167 5.20833 7.29167C5.83333 7.29167 19.1667 7.29167 19.7917 7.29167C20.9375 7.29167 21.875 6.35417 21.875 5.20833C21.875 4.0625 20.9375 3.125 19.7917 3.125Z" fill="#DA1E28"/>
+                              </svg>
+                            </button>
+                            <button
+                              class="arrow-btn  cursor-pointer w-fit gap-1 text-white font-normal rounded inline-flex items-center"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                <path opacity="0.35" d="M20.833 4.16666C19.4788 2.81249 17.1871 2.81249 15.833 4.16666L4.37464 15.625C4.06214 15.9375 3.85381 16.3542 3.74964 16.7708L3.12464 20.5208C3.02047 21.3542 3.64547 21.9792 4.47881 21.875L8.12464 21.25C8.54131 21.1458 8.95797 20.9375 9.27047 20.625L20.833 9.16666C22.1871 7.70832 22.1871 5.52082 20.833 4.16666Z" fill="#5461AC"/>
+                                <path d="M20.6253 9.375L18.542 11.3542L13.542 6.45833L15.6253 4.375L20.6253 9.375Z" fill="#5461AC"/>
+                                <path d="M6.77047 21.4583L4.47881 21.875C3.64547 21.9792 3.02047 21.3542 3.12464 20.5208L3.54131 18.2292L6.77047 21.4583Z" fill="#5461AC"/>
+                              </svg>
+                            </button>
+
+                            
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="details-row hidden">
+                        <td colspan="6" class="px-3 py-4">
+                            <table
+                              class="w-full text-sm text-left font-Poppins rtl:text-right text-gray-500 dark:text-gray-400"
+                            >
+                              <thead
+                                class="text-[14px] font-normal text-white font-Poppins bg-[#9FAAED]"
+                              >
+                                <tr>
+                                  <th scope="col" class="px-3 py-3 font-medium">
+                                    <div class="flex gap-2 items-center">
+                                      Sale ID
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="21"
+                                        viewBox="0 0 20 21"
+                                        fill="none"
+                                      >
+                                        <path
+                                          d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z"
+                                          fill="white"
+                                        />
+                                      </svg>
+                                    </div>
+                                  </th>
+                                  <th scope="col" class="px-3 py-3 font-medium">
+                                    Qty
+                                  </th>
+                                  <th scope="col" class="px-3 py-3 font-medium">
+                                    <div class="flex gap-2 items-center">
+                                      Section<svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="21"
+                                        viewBox="0 0 20 21"
+                                        fill="none"
+                                      >
+                                        <path
+                                          d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z"
+                                          fill="white"
+                                        />
+                                      </svg>
+                                    </div>
+                                  </th>
+                                  <th scope="col" class="px-3 py-3 font-medium">
+                                    Fan Side
+                                  </th>
+                                  <th scope="col" class="px-3 py-3 font-medium">
+                                    Block
+                                  </th>
+                                  <th scope="col" class="px-3 py-3 font-medium">
+                                    Price
+                                  </th>
+                                  <th scope="col" class="px-3 py-3 font-medium">
+                                    <div class="flex gap-2 items-center">
+                                      Split<svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="21"
+                                        viewBox="0 0 20 21"
+                                        fill="none"
+                                      >
+                                        <path
+                                          d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z"
+                                          fill="white"
+                                        />
+                                      </svg>
+                                    </div>
+                                    <th scope="col" class="px-3 py-3 font-medium">
+                                      Note
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 font-medium">
+                                      <div class="flex gap-2 items-center"> Ordered at<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                        <path d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z" fill="white"/>
+                                      </svg></div>
+                                    </th>
+                                  </th>
+                                  <th scope="col" class="px-3 py-3 font-medium">
+                                    <div class="flex gap-2 items-center">Sent Tickets<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                      <path d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z" fill="white"/>
+                                    </svg></div>
+                                  </th>
+                                </th>
+                                <th scope="col" class="px-3 py-3 font-medium">
+                                  Options
+                                </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="border-b dark:border-gray-200">
+                                  <td
+                                    data-label="Sale ID"
+                                    class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap"
+                                  >
+                                  12123
+                                  </td>
+                                  <td data-label="Venue" class="px-3 py-4">
+                                    2
+                                  </td>
+                                  <td data-label="Orders" class="px-3 py-4">
+                                    Home fans
+                                  </td>
+                                  <td data-label="Tickets" class="px-3 py-4">
+                                    £200 
+                                  </td>
+                                  <td data-label="Costs" class="px-3 py-4">
+                                    PAIRS
+                                  </td>
+                                  <td data-label="Date" class="px-3 py-4">
+                                    417/07 - 9:39 AM
+                                  </td>
+                                  <td data-label="Date" class="px-3 py-4">
+                                    Not sent yet
+                                  </td>
+                                  <td data-label="Date" class="px-3 py-4">
+                                    Not sent yet
+                                  </td>
+                                  <td data-label="Date" class="px-3 py-4">
+                                    Not sent yet
+                                  </td>
+                                  <td data-label="Date" class="px-3 py-4">
+                                    Not sent yet
+                                  </td>
+                                  <td data-label="Date" class="px-3 py-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                      <path d="M8.33333 2.60451C6.32292 2.60451 4.6875 4.23992 4.6875 6.25034C4.6875 8.26076 6.32292 9.89617 8.33333 9.89617C10.3437 9.89617 11.9792 8.26076 11.9792 6.25034C11.9792 4.23992 10.3437 2.60451 8.33333 2.60451ZM16.6667 2.60451C14.6562 2.60451 13.0208 4.23992 13.0208 6.25034C13.0208 8.26076 14.6562 9.89617 16.6667 9.89617C18.6771 9.89617 20.3125 8.26076 20.3125 6.25034C20.3125 4.23992 18.6771 2.60451 16.6667 2.60451ZM4.94792 10.9378C3.94271 10.9378 3.125 11.7555 3.125 12.7608V17.7087C3.125 20.5805 5.46146 22.917 8.33333 22.917C9.65729 22.917 10.8641 22.4169 11.7839 21.5997C10.9307 20.5309 10.4167 19.1795 10.4167 17.7087V12.7608C10.4167 12.0691 10.6639 11.4337 11.0738 10.9378H4.94792ZM13.2812 10.9378C12.276 10.9378 11.4583 11.7555 11.4583 12.7608V17.7087C11.4583 20.5805 13.7948 22.917 16.6667 22.917C19.5385 22.917 21.875 20.5805 21.875 17.7087V12.7608C21.875 11.7555 21.0573 10.9378 20.0521 10.9378H13.2812Z" fill="#5461AC"/>
+                                    </svg>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      
+                      
+                    </tbody>
+                  </table>
+                </div>
+                
+              </div>
+              <div>
+                <div class="flex justify-end w-full">
+                    <div class="flex gap-[20px] h-full">
+                        <button
+                          class="py-[14px] px-[30px] max-md:px-[33px] border border-[#DA1E28] h-full font-medium text-[#DA1E28] rounded-xl "
+                        >
+                        Cancel
+                        </button>
+                        <button
+                        class="py-[14px] px-[30px] max-md:px-[33px] h-full font-medium bg-[#5461AC] rounded-xl text-white"
+                      >
+                      Create Events
+                      </button>
+                      </div>
+                      
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+      <div class="py-[20px] relative z-50">
+        <p class="text-center text-white text-[16px] px-20">
+          Seatease Copyright © 2024. All rights reserved.
+        </p>
+      </div>
+    </div>
+    <!-- <script>
+      document.querySelectorAll(".arrow-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const detailsRow = this.closest("tr").nextElementSibling;
+          detailsRow.classList.toggle("hidden");
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      var options = {
+        chart: {
+          type: "area",
+          height: 100,
+          foreColor: "#999",
+          stacked: false,
+          dropShadow: {
+            enabled: false,
+            enabledSeries: [0],
+            top: -2,
+            left: 2,
+            blur: 5,
+            opacity: 0.06,
+          },
+        },
+        colors: ["#00E396", "#0090FF"],
+        stroke: {
+          curve: "smooth",
+          width: 3,
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        series: [
+          {
+            name: "Total Views",
+            data: generateDayWiseTimeSeries(0, 18),
+          },
+          {
+            name: "Unique Views",
+            data: generateDayWiseTimeSeries(1, 18),
+          },
+        ],
+        markers: {
+          size: 0,
+          strokeColor: "#fff",
+          strokeWidth: 3,
+          strokeOpacity: 1,
+          fillOpacity: 1,
+          hover: {
+            size: 6,
+          },
+        },
+        xaxis: {
+          type: "datetime",
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+        },
+        yaxis: {
+          labels: {
+            offsetX: 14,
+            offsetY: -5,
+          },
+          tooltip: {
+            enabled: false,
+          },
+        },
+        grid: {
+          padding: {
+            left: -5,
+            right: 5,
+          },
+        },
+        tooltip: {
+          x: {
+            format: "dd MMM yyyy",
+          },
+        },
+       
+        fill: {
+          type: "solid",
+          fillOpacity: 0.7,
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#timeline-chart"),
+        options
+      );
+
+      chart.render();
+
+      function generateDayWiseTimeSeries(s, count) {
+        var values = [
+          [4, 3, 10, 9, 29, 19, 25, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5],
+          [2, 3, 8, 7, 22, 16, 23, 7, 11, 5, 12, 5, 10, 4, 15, 2, 6, 2],
+        ];
+        var i = 0;
+        var series = [];
+        var x = new Date("11 Nov 2012").getTime();
+        while (i < count) {
+          series.push([x, values[s][i]]);
+          x += 86400000;
+          i++;
+        }
+        return series;
+      }
+
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("hidden");
+      }
+    </script> -->
+  </body>
+</html>

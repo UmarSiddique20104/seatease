@@ -1,0 +1,19 @@
+{
+  "name": "seatease",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
+  },
+  "dependencies": {
+    "datatables.net-dt": "^2.1.2",
+    "preline": "^2.4.0"
+  }
+}

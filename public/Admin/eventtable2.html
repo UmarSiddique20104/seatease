@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../output.css" />
+    <title>Event Table 2</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
+    />
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://code.jquery.com/jquery-3.5.1.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"
+    ></script>
+    <style>
+      .table-container {
+        width: 100%;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+
+      /* Responsive styles */
+      /* @media screen and (max-width: 767px) {
+        table {
+          border: 0;
+          width: 100%;
+        }
+        thead {
+          display: none;
+        }
+        tr {
+          display: block;
+          margin-bottom: 10px;
+        }
+        td {
+          display: block;
+          text-align: right;
+          position: relative;
+          padding-left: 130px !important;
+        }
+        td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 120px;
+          padding-left: 10px;
+          font-weight: bold;
+          text-align: left;
+        }
+      } */
+      th {
+        position: relative;
+        padding: 20px; /* Adjust padding as necessary */
+      }
+      th:not(:first-child)::before {
+        content: "";
+        position: absolute;
+        top: 50%; /* Position it in the middle */
+        left: 0;
+        bottom: 0;
+        width: 1px; /* Width of the border */
+        height: 50%; /* Height of the border, adjust as needed */
+        background-color: white; /* Border color */
+        transform: translateY(-50%); /* Center it vertically */
+      }
+      .hidden {
+        display: none;
+      }
+      .dataTables_wrapper .sorting_asc .dataTables_sort_icon {
+        background-image: url("path/to/your/custom-sort-asc-icon.svg");
+      }
+
+      .dataTables_wrapper .sorting_desc .dataTables_sort_icon {
+        background-image: url("path/to/your/custom-sort-desc-icon.svg");
+      }
+
+      /* Hide default sort icons */
+      .dataTables_wrapper .dataTables_sort_icon::before {
+        content: "";
+      }
+    </style>
+  </head>
+  <body class="min-h-full">
+    <div
+      class="relative h-full min-h-svh overflow-hidden pb-10 bg-[#24205A] backdrop-brightness-50"
+    >
+      <div
+        class="absolute top-0 left-0 w-1/2 h-full bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-10"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-1/2 h-full rotate-180 bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-10"
+      ></div>
+      <div class="font-Poppins relative z-20">
+        <nav
+          class="py-[20px] flex justify-between items-center max-md:flex-col max-lg:px-[40px] lg:px-[80px]"
+        >
+          <div class="z-50 cursor-pointer">
+            <a href="./Dashboard.html"
+              ><img src="../../src/assests/Logo.png" alt=""
+            /></a>
+          </div>
+          <div class="flex items-center gap-[30px]">
+            <div>
+              <ul class="flex items-center gap-[30px]">
+                <li class="font-medium text-xl text-white z-20">
+                  <a href="./Events.html">Events</a>
+                </li>
+                <li class="font-medium text-xl text-white">Orders</li>
+              </ul>
+            </div>
+
+            <div class="flex items-center gap-[8px]">
+              <div class="min-h-10 min-w-10">
+                <img
+                  src="../../src/assests/Ellipse 18.png"
+                  alt="profile"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <div>
+                <div class="py-1">
+                  <p class="font-semibold text-white text-[16px] leading-none">
+                    Tynisha Obey
+                  </p>
+                </div>
+                <div class="py-1">
+                  <p class="font-normal text-white text-[14px] leading-none">
+                    KATRING
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="h-full px-10 max-sm:px-5 w-full font-Poppins">
+        <div
+          class="w-full h-full rounded-[40px] bg-white py-8 max-sm:py-4 max-sm:px-1 px-8"
+        >
+          <div
+            class="w-full flex flex-row max-lg:flex-col gap-4 h-full relative z-20 bg-transparent"
+          >
+            <!-- left  -->
+            <div class="w-[100%] max-lg:w-full font-Poppins">
+              <div class="flex items-center relative z-50 py-4 px-1">
+                <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                  <path opacity="0.35" d="M22.5 41.25C32.8553 41.25 41.25 32.8553 41.25 22.5C41.25 12.1447 32.8553 3.75 22.5 3.75C12.1447 3.75 3.75 12.1447 3.75 22.5C3.75 32.8553 12.1447 41.25 22.5 41.25Z" fill="#949CA9"/>
+                  <path d="M15 24.375C15 24.375 31.2225 24.375 31.875 24.375C32.91 24.375 33.75 23.535 33.75 22.5C33.75 21.465 32.91 20.625 31.875 20.625C31.2225 20.625 15 20.625 15 20.625V24.375Z" fill="#949CA9"/>
+                  <path d="M22.5005 31.875C22.0205 31.875 21.5405 31.6913 21.1748 31.3256L13.6748 23.8256C12.9417 23.0925 12.9417 21.9075 13.6748 21.1744L21.1748 13.6744C21.908 12.9413 23.093 12.9413 23.8261 13.6744C24.5592 14.4075 24.5592 15.5925 23.8261 16.3256L17.6517 22.5L23.8261 28.6744C24.5592 29.4075 24.5592 30.5925 23.8261 31.3256C23.4605 31.6913 22.9805 31.875 22.5005 31.875Z" fill="#949CA9"/>
+                </svg>
+              </div>
+              <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="">
+                  <table
+                    id="example"
+                    class="w-full text-sm text-left rounded-t-[12px] font-Poppins rtl:text-right text-gray-500 dark:text-gray-400"
+                  >
+                    <thead
+                      class="text-[14px] font-normal text-white font-Poppins"
+                    >
+                      <tr class="bg-[#5461AC] rounded-t-[18px]">
+                        <th
+                          scope="col"
+                          class="px-3 rounded-l-[12px] py-3 font-medium"
+                        >
+                          Event Name
+                        </th>
+                        <th scope="col" class="px-3 py-1 font-medium">Venue</th>
+                        <th scope="col" class="px-3 py-1 font-medium">
+                          Orders
+                        </th>
+                        <th scope="col" class="px-3 py-1 font-medium">
+                          Tickets
+                        </th>
+                        <th scope="col" class="px-3 py-1 font-medium">Costs</th>
+                        <th
+                          scope="col"
+                          class="px-3 py-1 font-medium "
+                        >
+                          Date
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-3 py-1 font-medium rounded-r-[12px] "
+                        >
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b dark:border-gray-200">
+                        <td
+                          data-label="Event Name"
+                          class="px-3 py-1 font-medium text-gray-900 whitespace-nowrap"
+                        >
+                          Community Shield 2024
+                        </td>
+                        <td
+                          data-label="Venue"
+                          class="px-3 py-1 text-gray-900 font-medium"
+                        >
+                          Anfield
+                        </td>
+                        <td
+                          data-label="Orders"
+                          class="px-3 py-1 text-[#5461AC] font-medium"
+                        >
+                          20
+                        </td>
+                        <td
+                          data-label="Tickets"
+                          class="px-3 py-1 text-gray-900 font-medium"
+                        >
+                          <div class="flex gap-1">
+                            <span class="text-[#5461AC]">8</span> Tickets
+                          </div>
+                        </td>
+                        <td
+                          data-label="Costs"
+                          class="px-3 py-1 text-gray-900 font-medium"
+                        >
+                          £2,490.00
+                        </td>
+                        <td
+                          data-label="Date"
+                          class="px-3 py-1 text-gray-900 font-medium"
+                        >
+                          <div
+                            class="justify-evenly flex flex-wrap items-end gap-10"
+                          >
+                            <div>11/08/24</div>
+                           
+                          </div>
+                        </td>
+                        <td data-label="Actions" class="px-3 py-1 text-gray-900 font-medium flex gap-3 ">
+                            <button
+                            class="toggle-btn bg-[#5461AC] cursor-pointer gap-1 text-white font-normal py-[12.5px] px-6 rounded inline-flex items-center"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="15"
+                              height="10"
+                              viewBox="0 0 15 10"
+                              fill="none"
+                            >
+                              <path
+                                d="M7.31317 9.85383C7.5085 10.0492 7.82483 10.0492 8.02017 9.85383L14.8535 3.0205C15.0488 2.82517 15.0488 2.50883 14.8535 2.3135L12.6868 0.146833C12.4915 -0.0485003 12.1752 -0.0485003 11.9798 0.146833L7.66683 4.45983L3.35383 0.1465C3.1585 -0.0488339 2.84217 -0.0488339 2.64683 0.146499L0.480165 2.31317C0.382166 2.41083 0.3335 2.53883 0.3335 2.66683C0.3335 2.79483 0.382166 2.92283 0.479833 3.0205L7.31317 9.85383Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </button>
+                          <button
+                            class="open-btn bg-[#6FC176] cursor-pointer text-white font-normal py-2 px-4 rounded inline-flex items-center"
+                          >
+                            <span>Upadte</span>
+                          </button>
+                          <button
+                            class="bg-[#DA1E28] cursor-pointer gap-1 text-white font-normal py-2 px-4 rounded inline-flex items-center"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                            >
+                              <path
+                                opacity="0.35"
+                                d="M12.8333 18.3333H7.16664C5.91664 18.3333 4.8333 17.4167 4.66664 16.1667L3.41664 5.66667C3.3333 5.33333 3.66664 5 3.99997 5H16.0833C16.4166 5 16.6666 5.33333 16.6666 5.66667L15.3333 16.1667C15.0833 17.4167 14.0833 18.3333 12.8333 18.3333Z"
+                                fill="white"
+                              />
+                              <path
+                                d="M13.3333 3.33332H6.66663V2.49999C6.66663 1.99999 6.99996 1.66666 7.49996 1.66666H12.5C13 1.66666 13.3333 1.99999 13.3333 2.49999V3.33332Z"
+                                fill="white"
+                              />
+                              <path
+                                d="M15.8333 2.5C15.3333 2.5 4.66667 2.5 4.16667 2.5C3.25 2.5 2.5 3.25 2.5 4.16667C2.5 5.08333 3.25 5.83333 4.16667 5.83333C4.66667 5.83333 15.3333 5.83333 15.8333 5.83333C16.75 5.83333 17.5 5.08333 17.5 4.16667C17.5 3.25 16.75 2.5 15.8333 2.5Z"
+                                fill="white"
+                              />
+                            </svg>
+                            <span>Delete</span>
+                          </button>
+                           </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <!-- Hidden Nested Table Template -->
+                  <template id="nestedTableTemplate">
+                    <tr class="nested-table-container hidden">
+                      <td colspan="7">
+                        <table
+                          class="nested-table w-full text-sm text-left font-Poppins rtl:text-right text-gray-500 dark:text-gray-400"
+                        >
+                          <thead
+                            class="!text-[14px] text-white font-Poppins !bg-[#9FAAED]"
+                          >
+                            <tr class="!font-normal !bg-[#9FAAED]">
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                <div class="flex gap-2 items-center">
+                                  Sale ID
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="21"
+                                    viewBox="0 0 20 21"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7.91667 12.1667V17.375C7.91667 17.6092 8.0475 17.8237 8.25542 17.9308C8.34583 17.9771 8.44375 18 8.54167 18C8.66958 18 8.79708 17.9608 8.905 17.8837L11.8217 15.8004C11.9858 15.6829 12.0833 15.4933 12.0833 15.2917V12.1667H7.91667ZM16.4583 3H3.54167C2.9675 3 2.5 3.4675 2.5 4.04167V5.32875C2.5 6.2925 2.93417 7.18708 3.69083 7.78333L7.66792 10.9167H12.3317L16.3087 7.78333C17.0658 7.18708 17.5 6.29208 17.5 5.32875V4.04167C17.5 3.4675 17.0325 3 16.4583 3Z"
+                                      fill="white"
+                                    />
+                                  </svg>
+                                </div>
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                Qty
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                <div class="flex gap-2 items-center">
+                                  Section
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="21"
+                                    viewBox="0 0 20 21"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7.91667 12.1667V17.375C7.91667 17.6092 8.0475 17.8237 8.25542 17.9308C8.34583 17.9771 8.44375 18 8.54167 18C8.66958 18 8.79708 17.9608 8.905 17.8837L11.8217 15.8004C11.9858 15.6829 12.0833 15.4933 12.0833 15.2917V12.1667H7.91667ZM16.4583 3H3.54167C2.9675 3 2.5 3.4675 2.5 4.04167V5.32875C2.5 6.2925 2.93417 7.18708 3.69083 7.78333L7.66792 10.9167H12.3317L16.3087 7.78333C17.0658 7.18708 17.5 6.29208 17.5 5.32875V4.04167C17.5 3.4675 17.0325 3 16.4583 3Z"
+                                      fill="white"
+                                    />
+                                  </svg>
+                                </div>
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                Fan Side
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                Block
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                Price
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                Note
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                <div class="flex gap-2 items-center">
+                                  Split
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="21"
+                                    viewBox="0 0 20 21"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7.91667 12.1667V17.375C7.91667 17.6092 8.0475 17.8237 8.25542 17.9308C8.34583 17.9771 8.44375 18 8.54167 18C8.66958 18 8.79708 17.9608 8.905 17.8837L11.8217 15.8004C11.9858 15.6829 12.0833 15.4933 12.0833 15.2917V12.1667H7.91667ZM16.4583 3H3.54167C2.9675 3 2.5 3.4675 2.5 4.04167V5.32875C2.5 6.2925 2.93417 7.18708 3.69083 7.78333L7.66792 10.9167H12.3317L16.3087 7.78333C17.0658 7.18708 17.5 6.29208 17.5 5.32875V4.04167C17.5 3.4675 17.0325 3 16.4583 3Z"
+                                      fill="white"
+                                    />
+                                  </svg>
+                                </div>
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                <div class="flex gap-2 items-center">
+                                  Ordered at
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="21"
+                                    viewBox="0 0 20 21"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7.91667 12.1667V17.375C7.91667 17.6092 8.0475 17.8237 8.25542 17.9308C8.34583 17.9771 8.44375 18 8.54167 18C8.66958 18 8.79708 17.9608 8.905 17.8837L11.8217 15.8004C11.9858 15.6829 12.0833 15.4933 12.0833 15.2917V12.1667H7.91667ZM16.4583 3H3.54167C2.9675 3 2.5 3.4675 2.5 4.04167V5.32875C2.5 6.2925 2.93417 7.18708 3.69083 7.78333L7.66792 10.9167H12.3317L16.3087 7.78333C17.0658 7.18708 17.5 6.29208 17.5 5.32875V4.04167C17.5 3.4675 17.0325 3 16.4583 3Z"
+                                      fill="white"
+                                    />
+                                  </svg>
+                                </div>
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                <div class="flex gap-2 items-center">
+                                  Sent Tickets
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="21"
+                                    viewBox="0 0 20 21"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7.91667 12.1667V17.375C7.91667 17.6092 8.0475 17.8237 8.25542 17.9308C8.34583 17.9771 8.44375 18 8.54167 18C8.66958 18 8.79708 17.9608 8.905 17.8837L11.8217 15.8004C11.9858 15.6829 12.0833 15.4933 12.0833 15.2917V12.1667H7.91667ZM16.4583 3H3.54167C2.9675 3 2.5 3.4675 2.5 4.04167V5.32875C2.5 6.2925 2.93417 7.18708 3.69083 7.78333L7.66792 10.9167H12.3317L16.3087 7.78333C17.0658 7.18708 17.5 6.29208 17.5 5.32875V4.04167C17.5 3.4675 17.0325 3 16.4583 3Z"
+                                      fill="white"
+                                    />
+                                  </svg>
+                                </div>
+                              </th>
+                              <th scope="col" class="px-3 py-1 font-medium">
+                                Options
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="border-b dark:border-gray-200">
+                              <td
+                                class="px-3 py-1 font-medium text-gray-900 whitespace-nowrap"
+                              >
+                                12123
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium">
+                                2
+                              </td>
+                              <td class="px-3 py-1 text-[#5461AC] font-medium">
+                                Longside Lower
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium">
+                                Home fans
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium">
+                                Home fans
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium">
+                                £18.99
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium">
+                                PAIRS
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium">
+                                Home fans
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium">
+                                417/07 - 9:39 AM
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium">
+                                Not sent yet
+                              </td>
+                              <td class="px-3 py-1 text-gray-900 font-medium " onclick="toggleModal()">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="25"
+                                  height="25"
+                                  viewBox="0 0 25 25"
+                                  fill="none"
+                                >
+                                  <path
+                                    d="M8.33333 2.60416C6.32292 2.60416 4.6875 4.23958 4.6875 6.25C4.6875 8.26041 6.32292 9.89583 8.33333 9.89583C10.3437 9.89583 11.9792 8.26041 11.9792 6.25C11.9792 4.23958 10.3437 2.60416 8.33333 2.60416ZM16.6667 2.60416C14.6562 2.60416 13.0208 4.23958 13.0208 6.25C13.0208 8.26041 14.6562 9.89583 16.6667 9.89583C18.6771 9.89583 20.3125 8.26041 20.3125 6.25C20.3125 4.23958 18.6771 2.60416 16.6667 2.60416ZM4.94792 10.9375C3.94271 10.9375 3.125 11.7552 3.125 12.7604V17.7083C3.125 20.5802 5.46146 22.9167 8.33333 22.9167C9.65729 22.9167 10.8641 22.4165 11.7839 21.5993C10.9307 20.5306 10.4167 19.1792 10.4167 17.7083V12.7604C10.4167 12.0687 10.6639 11.4333 11.0738 10.9375H4.94792ZM13.2812 10.9375C12.276 10.9375 11.4583 11.7552 11.4583 12.7604V17.7083C11.4583 20.5802 13.7948 22.9167 16.6667 22.9167C19.5385 22.9167 21.875 20.5802 21.875 17.7083V12.7604C21.875 11.7552 21.0573 10.9375 20.0521 10.9375H13.2812Z"
+                                    fill="#5461AC"
+                                  />
+                                </svg>
+                              </td>
+                            </tr>
+                            
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </template>
+                </div>
+              </div>
+              <div
+                  class="grid justify-center w-full p-6 sm:flex sm:justify-start sm:items-center gap-2"
+                >
+                  <nav
+                    class="flex items-center gap-x-1 w-full justify-end"
+                    aria-label="Pagination"
+                  >
+                    <button
+                      type="button"
+                      class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none border-neutral-400 dark:hover:bg-white/10 dark:focus:bg-white/10"
+                      aria-label="Previous"
+                    >
+                      <svg
+                        class="shrink-0 size-3.5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m15 18-6-6 6-6"></path>
+                      </svg>
+                      <span class="sr-only">Previous</span>
+                    </button>
+                    <div class="flex items-center gap-x-1">
+                      <button
+                        type="button"
+                        class="min-h-[38px] min-w-[38px] flex justify-center items-center border text-white py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-50 disabled:opacity-50 bg-[#5461AC] disabled:pointer-events-none border-neutral-400"
+                        aria-current="page"
+                      >
+                        1
+                      </button>
+                      <button
+                        type="button"
+                        class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-neutral-400 text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-white/10 dark:focus:bg-white/10"
+                      >
+                        2
+                      </button>
+                      <button
+                        type="button"
+                        class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-transparent text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none border-neutral-400 dark:hover:bg-white/10 dark:focus:bg-white/10"
+                      >
+                        3
+                      </button>
+                      <div class="hs-tooltip inline-block">
+                        <button
+                          type="button"
+                          class="hs-tooltip-toggle group min-h-[38px] min-w-[38px] flex justify-center items-center text-gray-400 hover:text-blue-600 p-2 text-sm border border-neutral-400 rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:bg-white/10"
+                        >
+                          <span class="group-hover:hidden text-xs">•••</span>
+                          <svg
+                            class="group-hover:block hidden shrink-0 size-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="m6 17 5-5-5-5"></path>
+                            <path d="m13 17 5-5-5-5"></path>
+                          </svg>
+                          <span
+                            class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
+                            role="tooltip"
+                          >
+                            Next 4 pages
+                          </span>
+                        </button>
+                      </div>
+                      <button
+                        type="button"
+                        class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-neutral-400 text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-white/10 dark:focus:bg-white/10"
+                      >
+                        8
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none border-neutral-400 dark:hover:bg-white/10 dark:focus:bg-white/10"
+                      aria-label="Next"
+                    >
+                      <span class="sr-only">Next</span>
+                      <svg
+                        class="shrink-0 size-3.5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m9 18 6-6-6-6"></path>
+                      </svg>
+                    </button>
+                  </nav>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+      <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity">
+          <div class="absolute inset-0 bg-gray-900 opacity-75" />
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+        <div class="inline-block align-center bg-white rounded-[12px] text-left  shadow-xl transform transition-all my-40
+        max-sm:my-52 max-md:my-48 max-lg:my-44 max-xl:my-52  align-middle max-w-[90%] overflow-scroll w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+          <form action="">
+            <table
+              class="w-full text-sm text-left  rtl:text-right text-gray-500 "
+          >
+            <thead
+              class="text-[14px] font-normal text-white  bg-[#9FAAED]"
+            >
+            <tr>
+                <th class="w-[2%] px-3 py-3 font-medium rounded-l-[12px]">
+                  #
+                </th>
+                <th class="w-[250px] px-3 py-3 font-medium ">
+                  Name
+                </th>
+                <th class="w-[250px] px-3 py-3 font-medium">
+                  Surname
+                </th>
+                <th class="w-[250px] px-3 py-3 font-medium">
+                  DOB
+                </th>
+                <th class="w-[250px] px-3 py-3 font-medium">
+                  Nationality
+                </th>
+                <th class="w-[250px] px-3 py-3 font-medium">
+                  Passport Id
+                </th>
+                <th class="w-[250px] px-3 py-3 font-medium rounded-r-[12px]">
+                  Email
+                </th>
+                
+              </th>
+             
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b dark:border-gray-200">
+                <td
+                  class="px-3 py-3 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  1
+                </td>
+                <td class="w-[250px] lg:w-[200px] py-3 text-gray-900 font-medium">
+                  <input  type="text" class="  py-[18px] ps-9 pe-3 border-[1px] rounded-[10px] border-solid border-[#949CA9]" required placeholder="Name">
+                </td>
+                <td class="w-[250px] lg:w-[200px] py-3 text-gray-900 font-medium">
+                  <input  type="text" class="  py-[18px] ps-9 pe-3 border-[1px] rounded-[10px] border-solid border-[#949CA9]" required placeholder="Surname">
+                </td>
+                
+                <td class="w-[250px] lg:w-[200px] py-3 text-gray-900 font-medium">
+                  <input  type="date" class="  py-[18px] ps-9 pe-3 border-[1px] rounded-[10px] border-solid border-[#949CA9]" required placeholder="DOB">
+                </td>
+                <td class="w-[250px] lg:w-[200px] py-3 text-gray-900 font-medium">
+                  <input  type="text" class="  py-[18px] ps-9 pe-3 border-[1px] rounded-[10px] border-solid border-[#949CA9]" required placeholder="Nationality">
+                </td>
+                <td class="w-[250px] lg:w-[200px] py-3 text-gray-900 font-medium">
+                  <input  type="text" class="  py-[18px] ps-9 pe-3 border-[1px] rounded-[10px] border-solid border-[#949CA9]" required placeholder="Passport Id">
+                </td>
+                <td class="w-[250px] lg:w-[200px] py-3 text-gray-900 font-medium">
+                  <input  type="text" class="  py-[18px] ps-9 pe-3 border-[1px] rounded-[10px] border-solid border-[#949CA9]" required placeholder="Email">
+                </td>
+              </tr>
+            </tbody>
+            </table>
+            
+            <div class="w-full  px-4 py-3 text-right">
+              <button type="submit" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i class="fas fa-times"></i>Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="py-[20px] relative z-50">
+        <p class="text-center text-white text-[16px] px-20">
+          Seatease Copyright © 2024. All rights reserved.
+        </p>
+      </div>
+    </div>
+    <script>
+      function toggleModal() { document.getElementById('modal').classList.toggle('hidden')
+    }
+    </script>
+    <script>
+      $(document).ready(function () {
+        function initializeDataTables(nestedTable) {
+          nestedTable.DataTable({
+            paging: false,
+            searching: false,
+            info: false,
+          });
+        }
+        function toggleNestedTable(button) {
+          const currentRow = $(button).closest("tr");
+          let nestedTableContainer = currentRow.next(".nested-table-container");
+
+          if (nestedTableContainer.length === 0) {
+            const nestedTableTemplate = $("#nestedTableTemplate").html();
+            currentRow.after(nestedTableTemplate);
+            nestedTableContainer = currentRow.next(".nested-table-container");
+            nestedTableContainer.removeClass("hidden");
+            const nestedTable = nestedTableContainer.find(".nested-table");
+            initializeDataTables(nestedTable);
+          } else {
+            nestedTableContainer.toggleClass("hidden");
+          }
+        }
+
+        $(document).on("click", ".toggle-btn", function () {
+          toggleNestedTable(this);
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      var options = {
+        chart: {
+          type: "area",
+          height: 100,
+          foreColor: "#999",
+          stacked: false,
+          dropShadow: {
+            enabled: false,
+            enabledSeries: [0],
+            top: -2,
+            left: 2,
+            blur: 5,
+            opacity: 0.06,
+          },
+        },
+        colors: ["#00E396", "#0090FF"],
+        stroke: {
+          curve: "smooth",
+          width: 3,
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        series: [
+          {
+            name: "Total Views",
+            data: generateDayWiseTimeSeries(0, 18),
+          },
+          {
+            name: "Unique Views",
+            data: generateDayWiseTimeSeries(1, 18),
+          },
+        ],
+        markers: {
+          size: 0,
+          strokeColor: "#fff",
+          strokeWidth: 3,
+          strokeOpacity: 1,
+          fillOpacity: 1,
+          hover: {
+            size: 6,
+          },
+        },
+        xaxis: {
+          type: "datetime",
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+        },
+        yaxis: {
+          labels: {
+            offsetX: 14,
+            offsetY: -5,
+          },
+          tooltip: {
+            enabled: false,
+          },
+        },
+        grid: {
+          padding: {
+            left: -5,
+            right: 5,
+          },
+        },
+        tooltip: {
+          x: {
+            format: "dd MMM yyyy",
+          },
+        },
+
+        fill: {
+          type: "solid",
+          fillOpacity: 0.7,
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#timeline-chart"),
+        options
+      );
+
+      chart.render();
+
+      function generateDayWiseTimeSeries(s, count) {
+        var values = [
+          [4, 3, 10, 9, 29, 19, 25, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5],
+          [2, 3, 8, 7, 22, 16, 23, 7, 11, 5, 12, 5, 10, 4, 15, 2, 6, 2],
+        ];
+        var i = 0;
+        var series = [];
+        var x = new Date("11 Nov 2012").getTime();
+        while (i < count) {
+          series.push([x, values[s][i]]);
+          x += 86400000;
+          i++;
+        }
+        return series;
+      }
+
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>

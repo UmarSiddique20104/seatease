@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../output.css" />
+    <title>DashBoard</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
+    />
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://code.jquery.com/jquery-3.5.1.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"
+    ></script>
+    <style>
+      .table-container {
+        width: 100%;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+
+      /* Responsive styles */
+      /* @media screen and (max-width: 767px) {
+        table {
+          border: 0;
+          width: 100%;
+        }
+        thead {
+          display: none;
+        }
+        tr {
+          display: block;
+          margin-bottom: 10px;
+        }
+        td {
+          display: block;
+          text-align: right;
+          position: relative;
+          padding-left: 130px !important;
+        }
+        td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 120px;
+          padding-left: 10px;
+          font-weight: bold;
+          text-align: left;
+        }
+      } */
+      th {
+        position: relative;
+        padding: 20px; /* Adjust padding as necessary */
+      }
+      th:not(:first-child)::before {
+        content: "";
+        position: absolute;
+        top: 50%; /* Position it in the middle */
+        left: 0;
+        bottom: 0;
+        width: 1px; /* Width of the border */
+        height: 50%; /* Height of the border, adjust as needed */
+        background-color: white; /* Border color */
+        transform: translateY(-50%); /* Center it vertically */
+      }
+      .hidden {
+        display: none;
+      }
+      .dataTables_wrapper .sorting_asc .dataTables_sort_icon {
+        background-image: url("path/to/your/custom-sort-asc-icon.svg");
+      }
+
+      .dataTables_wrapper .sorting_desc .dataTables_sort_icon {
+        background-image: url("path/to/your/custom-sort-desc-icon.svg");
+      }
+
+      /* Hide default sort icons */
+      .dataTables_wrapper .dataTables_sort_icon::before {
+        content: "";
+      }
+    </style>
+  </head>
+  <body class="min-h-full">
+    <div
+      class="relative h-full min-h-svh overflow-hidden pb-10 bg-[#24205A] backdrop-brightness-50"
+    >
+      <div
+        class="absolute top-0 left-0 w-1/2 h-full bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-10"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-1/2 h-full rotate-180 bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-10"
+      ></div>
+      <div class="font-Poppins relative z-20">
+        <nav
+          class="py-[20px] flex justify-between items-center max-md:flex-col max-lg:px-[40px] lg:px-[80px]"
+        >
+          <div class="z-50 cursor-pointer">
+            <a href="./Dashboard.html"
+              ><img src="../../src/assests/Logo.png" alt=""
+            /></a>
+          </div>
+          <div class="flex items-center gap-[30px]">
+            <div>
+              <ul class="flex items-center gap-[30px]">
+                <li class="font-medium text-xl text-white z-20">
+                  <a href="./Events.html">Events</a>
+                </li>
+                <li class="font-medium text-xl text-white">Orders</li>
+              </ul>
+            </div>
+
+            <div class="flex items-center gap-[8px]">
+              <div class="min-h-10 min-w-10">
+                <img
+                  src="../../src/assests/Ellipse 18.png"
+                  alt="profile"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <div>
+                <div class="py-1">
+                  <p class="font-semibold text-white text-[16px] leading-none">
+                    Tynisha Obey
+                  </p>
+                </div>
+                <div class="py-1">
+                  <p class="font-normal text-white text-[14px] leading-none">
+                    KATRING
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="h-full px-10 max-sm:px-5 w-full font-Poppins">
+        <div
+          class="w-full h-full rounded-[40px] bg-white py-8 max-sm:py-4 max-sm:px-1 px-8"
+        >
+        <div class="flex items-center relative z-50 justify-between py-3">
+          <div >
+            <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+              <path opacity="0.35" d="M22.5 41.25C32.8553 41.25 41.25 32.8553 41.25 22.5C41.25 12.1447 32.8553 3.75 22.5 3.75C12.1447 3.75 3.75 12.1447 3.75 22.5C3.75 32.8553 12.1447 41.25 22.5 41.25Z" fill="#949CA9"/>
+              <path d="M15 24.375C15 24.375 31.2225 24.375 31.875 24.375C32.91 24.375 33.75 23.535 33.75 22.5C33.75 21.465 32.91 20.625 31.875 20.625C31.2225 20.625 15 20.625 15 20.625V24.375Z" fill="#949CA9"/>
+              <path d="M22.5005 31.875C22.0205 31.875 21.5405 31.6913 21.1748 31.3256L13.6748 23.8256C12.9417 23.0925 12.9417 21.9075 13.6748 21.1744L21.1748 13.6744C21.908 12.9413 23.093 12.9413 23.8261 13.6744C24.5592 14.4075 24.5592 15.5925 23.8261 16.3256L17.6517 22.5L23.8261 28.6744C24.5592 29.4075 24.5592 30.5925 23.8261 31.3256C23.4605 31.6913 22.9805 31.875 22.5005 31.875Z" fill="#949CA9"/>
+            </svg>
+          </div>
+          <div class="flex max-sm:w-full">
+            <button
+            class="py-[15px] px-[25px] w-full flex gap-[8px] justify-center items-center h-full max-md:px-[33px] text-[18px] font-semibold bg-[#5461AC] rounded-xl text-white"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path opacity="0.35" d="M19 10C18.722 10 16.553 10 14 10C14 7.447 14 5.278 14 5C14 3.895 13.105 3 12 3C10.895 3 10 3.895 10 5C10 5.278 10 7.447 10 10C7.447 10 5.278 10 5 10C3.895 10 3 10.895 3 12C3 13.105 3.895 14 5 14C5.2 14 18.8 14 19 14C20.105 14 21 13.105 21 12C21 10.895 20.105 10 19 10Z" fill="white"/>
+            <path d="M12 21C13.105 21 14 20.105 14 19C14 18.722 14 16.553 14 14H10C10 16.553 10 18.722 10 19C10 20.105 10.895 21 12 21Z" fill="white"/>
+          </svg>
+          Add
+          </button></div>
+         </div>
+          <div
+            class="w-full flex flex-row max-lg:flex-col gap-4 h-full relative z-20 bg-transparent"
+          >
+         
+            <!-- left  -->
+            <div class="w-full z-20">
+
+              <div
+                class="relative  overflow-x-auto border-1 border-solid boder-[#949CA9]  sm:rounded-lg"
+              >
+                <div class="">
+                  <table
+                    class="w-full text-sm text-left rounded-t-[12px]   rtl:text-right  text-gray-500 dark:text-gray-400"
+                  >
+                    <thead
+                      class="text-[14px]  font-normal  text-white  "
+                    >
+                      <tr class=" bg-[#5461AC]  rounded-t-[18px]">
+                        <th scope="col" class="px-3 rounded-l-[12px] py-3 font-medium">
+                          Event Name
+                        </th>
+                        <th scope="col" class="px-3 py-3 font-medium">Venue</th>
+                        <th scope="col" class="px-3 py-3 font-medium">
+                          Listing
+                        </th>
+                        <th scope="col" class="px-3 py-3 font-medium">
+                          Tickets
+                        </th>
+                        <th scope="col" class="px-3 py-3 font-medium  ">Date</th>
+                        <th scope="col" class="px-3 py-3 font-medium  rounded-r-[12px]">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+    
+                        <tr class="border-b dark:border-gray-200">
+                          <td
+                            data-label="Event Name"
+                            class="px-3 py-3 font-medium text-gray-900 whitespace-nowrap"
+                          >
+                            Community Shield 2024
+                          </td>
+                          <td data-label="Venue" class="px-3 py-3 text-gray-900 font-medium">Anfield</td>
+                          <td data-label="Orders" class="px-3 py-3 text-[#5461AC] font-medium">20</td>
+                          <td data-label="Tickets" class="px-3 py-3 text-gray-900 font-medium " >
+                            <div class="flex gap-1">
+                              <span class="text-[#5461AC] ">8</span> Tickets
+                            </div>
+                          </td>
+                          <td data-label="Date" class="px-3 py-3 text-gray-900 font-medium">
+                            <div
+                              class="flex flex-row max-md:flex-row items-center justify-between  gap-2"
+                            >
+                              11/08/24
+                              
+                            </div>
+                            <td data-label="Date" class="px-3 py-3 text-gray-900 font-medium">
+                              <div
+                                class="flex  items-center  gap-2"
+                              >
+                              <button
+                              class="arrow-btn bg-[#5461AC] cursor-pointer gap-1 text-white font-normal py-[12.5px] px-6 rounded inline-flex items-center z-20"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="15"
+                                height="10"
+                                viewBox="0 0 15 10"
+                                fill="none"
+                              >
+                                <path
+                                  d="M7.31317 9.85383C7.5085 10.0492 7.82483 10.0492 8.02017 9.85383L14.8535 3.0205C15.0488 2.82517 15.0488 2.50883 14.8535 2.3135L12.6868 0.146833C12.4915 -0.0485003 12.1752 -0.0485003 11.9798 0.146833L7.66683 4.45983L3.35383 0.1465C3.1585 -0.0488339 2.84217 -0.0488339 2.64683 0.146499L0.480165 2.31317C0.382166 2.41083 0.3335 2.53883 0.3335 2.66683C0.3335 2.79483 0.382166 2.92283 0.479833 3.0205L7.31317 9.85383Z"
+                                  fill="white"
+                                />
+                              </svg>
+                            </button>
+                            <button
+                            class="open-btn bg-[#6FC176] cursor-pointer text-white font-normal py-2 px-4 rounded inline-flex items-center"
+                          >
+                            <span>Upadte</span>
+                          </button>
+                          <button
+                            class="bg-[#DA1E28] cursor-pointer gap-1 text-white font-normal py-2 px-4 rounded inline-flex items-center"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                            >
+                              <path
+                                opacity="0.35"
+                                d="M12.8333 18.3333H7.16664C5.91664 18.3333 4.8333 17.4167 4.66664 16.1667L3.41664 5.66667C3.3333 5.33333 3.66664 5 3.99997 5H16.0833C16.4166 5 16.6666 5.33333 16.6666 5.66667L15.3333 16.1667C15.0833 17.4167 14.0833 18.3333 12.8333 18.3333Z"
+                                fill="white"
+                              />
+                              <path
+                                d="M13.3333 3.33332H6.66663V2.49999C6.66663 1.99999 6.99996 1.66666 7.49996 1.66666H12.5C13 1.66666 13.3333 1.99999 13.3333 2.49999V3.33332Z"
+                                fill="white"
+                              />
+                              <path
+                                d="M15.8333 2.5C15.3333 2.5 4.66667 2.5 4.16667 2.5C3.25 2.5 2.5 3.25 2.5 4.16667C2.5 5.08333 3.25 5.83333 4.16667 5.83333C4.66667 5.83333 15.3333 5.83333 15.8333 5.83333C16.75 5.83333 17.5 5.08333 17.5 4.16667C17.5 3.25 16.75 2.5 15.8333 2.5Z"
+                                fill="white"
+                              />
+                            </svg>
+                            <span>Delete</span>
+                          </button>
+                                
+                              </div>
+                            </td>
+                          </td>
+                        </tr>
+    
+                        <tr class="details-row hidden">
+                          <td colspan="6" class="px-3 py-4">
+                              <table
+                                class="w-full text-sm text-left  rtl:text-right text-gray-500 dark:text-gray-400"
+                              >
+                                <thead
+                                  class="text-[14px] font-normal text-white  bg-[#9FAAED] rounded-[12px]"
+                                >
+                                  <tr>
+                                    <th scope="col" class="px-3 py-3 font-medium rounded-l-[12px]">
+                                        Split
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 font-medium">
+                                      Section
+                                    </th>
+                                    
+                                    <th scope="col" class="px-3 py-3 font-medium">
+                                      Fan Side
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 font-medium">
+                                      Block
+                                    </th>
+                                    
+                                    <th scope="col" class="px-3 py-3 font-medium">
+                                      <div class="flex gap-2 items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="19" viewBox="0 0 14 19" fill="none">
+                                          <path d="M13.5353 15.7609V18.5H1.67391L1.13587 16.7391C1.86957 16.0217 2.40761 15.2962 2.75 14.5625C3.09239 13.8125 3.26359 12.8832 3.26359 11.7745C3.26359 11.6603 3.24728 11.4728 3.21467 11.212H0.5V8.86413H2.52989C2.2038 7.75543 2.04076 6.75272 2.04076 5.85598C2.04076 4.74728 2.27717 3.79348 2.75 2.99456C3.23913 2.17935 3.91576 1.55978 4.77989 1.13587C5.64402 0.711957 6.63859 0.5 7.76359 0.5C9.57337 0.5 10.9511 1.00543 11.8967 2.01631C12.8587 3.01087 13.3641 4.29076 13.413 5.85598H10.2582C10.2418 5.07337 10.038 4.46196 9.64674 4.02174C9.25543 3.56522 8.64402 3.33696 7.8125 3.33696C7.0462 3.33696 6.43478 3.56522 5.97826 4.02174C5.53804 4.47826 5.31793 5.17935 5.31793 6.125C5.31793 6.54891 5.3587 6.97283 5.44022 7.39674C5.53804 7.80435 5.67663 8.29348 5.85598 8.86413H10.4538V11.212H6.46739C6.5 11.4728 6.5163 11.6685 6.5163 11.7989C6.5163 12.5 6.37772 13.2011 6.10054 13.9022C5.83967 14.587 5.43207 15.2065 4.87772 15.7609H13.5353Z" fill="white"/>
+                                          </svg>
+      
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="21" viewBox="0 0 11 21" fill="none">
+                                            <path d="M0.535156 5.73174C0.535187 5.86737 0.573879 5.9999 0.64628 6.11238C0.718681 6.22486 0.821499 6.31218 0.941579 6.36316C1.06166 6.41413 1.19354 6.42645 1.32035 6.39854C1.44716 6.37063 1.56312 6.30376 1.65341 6.20648L4.88272 2.82653L4.88272 19.8088C4.8815 19.8991 4.89744 19.9888 4.92961 20.0726C4.96179 20.1564 5.00955 20.2326 5.07014 20.297C5.13072 20.3613 5.20291 20.4123 5.28251 20.4472C5.36212 20.482 5.44755 20.5 5.53383 20.5C5.62012 20.5 5.70555 20.482 5.78516 20.4472C5.86476 20.4123 5.93695 20.3613 5.99753 20.297C6.05812 20.2326 6.10588 20.1564 6.13806 20.0726C6.17023 19.9888 6.18617 19.8991 6.18495 19.8088L6.18495 2.82653L9.41425 6.20647C9.47425 6.27188 9.54611 6.3241 9.62563 6.36007C9.70515 6.39604 9.79073 6.41504 9.87735 6.41596C9.96398 6.41688 10.0499 6.39971 10.1301 6.36543C10.2103 6.33116 10.2832 6.28049 10.3444 6.21637C10.4057 6.15226 10.4541 6.076 10.4868 5.99205C10.5196 5.90811 10.536 5.81817 10.5351 5.72751C10.5342 5.63685 10.5161 5.54728 10.4817 5.46405C10.4473 5.38082 10.3975 5.3056 10.335 5.2428L5.99419 0.699526C5.87208 0.571769 5.70649 0.500002 5.53383 0.500002C5.36118 0.500002 5.19559 0.57177 5.07347 0.699526L0.732695 5.2428C0.670194 5.30633 0.620506 5.38233 0.586575 5.46632C0.552644 5.5503 0.535159 5.64056 0.535156 5.73174Z" fill="white"/>
+                                            </svg>
+                                      </div>
+                                      <th scope="col" class="px-3 py-3 font-medium">
+                                        Qty
+                                      </th>
+                                     
+                                    </th>
+                                    
+                                  <th scope="col" class="px-3 py-3 font-medium rounded-r-[12px]">
+                                    Note
+                                  </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr class="border-b dark:border-gray-200">
+                                    <td
+                                      data-label="Sale ID"
+                                      class="px-3 py-4 font-medium text-black whitespace-nowrap"
+                                    >
+                                    PAIRS
+                                    </td>
+                                    <td data-label="Venue" class="px-3 py-4 text-black">
+                                      Shortside Upper
+                                    </td>
+                                    <td data-label="Orders" class="px-3 py-4 text-black">
+                                      City
+                                    </td>
+                                    <td data-label="Tickets" class="px-3 py-4 text-black">
+                                      
+                                    </td>
+                                    <td data-label="Costs" class="px-3 py-4 text-black" >
+                                      85
+                                    </td>
+                                    <td data-label="Date" class="px-3 py-4 w-[15%]">
+                                     <div class="w-full flex items-center relative">
+                                      <div class="border-[1px] border-solid border-[#949CA9] w-1/2 max-sm:w-full  rounded-[3px]">
+                                        <select name="" id="" class="w-full">
+                                          <option value=""></option>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                        </select>
+                                        
+                                      </div>
+                                      <div class="text-black ps-2">/2</div>
+      
+                                      <div class="absolute top-2 right-[55%]">
+                                        
+                                      </div>
+                                     </div>
+                                    </td>
+                                    
+                                    <td data-label="Date" class="px-3 py-4">
+                                      
+                                    </td>
+                                  </tr>
+                                  <tr class="border-b dark:border-gray-200">
+                                    <td
+                                      data-label="Sale ID"
+                                      class="px-3 py-4 font-medium text-black whitespace-nowrap"
+                                    >
+                                    PAIRS
+                                    </td>
+                                    <td data-label="Venue" class="px-3 py-4 text-black">
+                                      Shortside Upper
+                                    </td>
+                                    <td data-label="Orders" class="px-3 py-4 text-black">
+                                      City
+                                    </td>
+                                    <td data-label="Tickets" class="px-3 py-4 text-black">
+                                      
+                                    </td>
+                                    <td data-label="Costs" class="px-3 py-4 text-black" >
+                                      85
+                                    </td>
+                                    <td data-label="Date" class="px-3 py-4 w-[15%]">
+                                     <div class="w-full flex items-center relative">
+                                      <div class="border-[1px] border-solid border-[#949CA9] w-1/2 max-sm:w-full  rounded-[3px]">
+                                        <select name="" id="" class="w-full">
+                                          <option value=""></option>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                        </select>
+                                        
+                                      </div>
+                                      <div class="text-black ps-2">/2</div>
+      
+                                      <div class="absolute top-2 right-[55%]">
+                                        
+                                      </div>
+                                     </div>
+                                    </td>
+                                    
+                                    <td data-label="Date" class="px-3 py-4">
+                                      
+                                    </td>
+                                  </tr>
+                                  <tr class="border-b dark:border-gray-200">
+                                    <td
+                                      data-label="Sale ID"
+                                      class="px-3 py-4 font-medium text-black whitespace-nowrap"
+                                    >
+                                    PAIRS
+                                    </td>
+                                    <td data-label="Venue" class="px-3 py-4 text-black">
+                                      Shortside Upper
+                                    </td>
+                                    <td data-label="Orders" class="px-3 py-4 text-black">
+                                      City
+                                    </td>
+                                    <td data-label="Tickets" class="px-3 py-4 text-black">
+                                      
+                                    </td>
+                                    <td data-label="Costs" class="px-3 py-4 text-black" >
+                                      85
+                                    </td>
+                                    <td data-label="Date" class="px-3 py-4 w-[15%]">
+                                     <div class="w-full flex items-center relative">
+                                      <div class="border-[1px] border-solid border-[#949CA9] w-1/2 max-sm:w-full  rounded-[3px]">
+                                        <select name="" id="" class="w-full">
+                                          <option value=""></option>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                        </select>
+                                        
+                                      </div>
+                                      <div class="text-black ps-2">/2</div>
+      
+                                      <div class="absolute top-2 right-[55%]">
+                                        
+                                      </div>
+                                     </div>
+                                    </td>
+                                    
+                                    <td data-label="Date" class="px-3 py-4">
+                                      
+                                    </td>
+                                  </tr>
+                                  <tr class="border-b dark:border-gray-200">
+                                    <td
+                                      data-label="Sale ID"
+                                      class="px-3 py-4 font-medium text-black whitespace-nowrap"
+                                    >
+                                    PAIRS
+                                    </td>
+                                    <td data-label="Venue" class="px-3 py-4 text-black">
+                                      Shortside Upper
+                                    </td>
+                                    <td data-label="Orders" class="px-3 py-4 text-black">
+                                      City
+                                    </td>
+                                    <td data-label="Tickets" class="px-3 py-4 text-black">
+                                      
+                                    </td>
+                                    <td data-label="Costs" class="px-3 py-4 text-black" >
+                                      85
+                                    </td>
+                                    <td data-label="Date" class="px-3 py-4 w-[15%]">
+                                     <div class="w-full flex items-center relative">
+                                      <div class="border-[1px] border-solid border-[#949CA9] w-1/2 max-sm:w-full  rounded-[3px]">
+                                        <select name="" id="" class="w-full">
+                                          <option value=""></option>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                        </select>
+                                        
+                                      </div>
+                                      <div class="text-black ps-2">/2</div>
+      
+                                      <div class="absolute top-2 right-[55%]">
+                                        
+                                      </div>
+                                     </div>
+                                    </td>
+                                    
+                                    <td data-label="Date" class="px-3 py-4">
+                                      
+                                    </td>
+                                  </tr>
+                                  <tr class="border-b dark:border-gray-200">
+                                    <td
+                                      data-label="Sale ID"
+                                      class="px-3 py-4 font-medium text-black whitespace-nowrap"
+                                    >
+                                    PAIRS
+                                    </td>
+                                    <td data-label="Venue" class="px-3 py-4 text-black">
+                                      Shortside Upper
+                                    </td>
+                                    <td data-label="Orders" class="px-3 py-4 text-black">
+                                      City
+                                    </td>
+                                    <td data-label="Tickets" class="px-3 py-4 text-black">
+                                      
+                                    </td>
+                                    <td data-label="Costs" class="px-3 py-4 text-black" >
+                                      85
+                                    </td>
+                                    <td data-label="Date" class="px-3 py-4 w-[15%]">
+                                     <div class="w-full flex items-center relative">
+                                      <div class="border-[1px] border-solid border-[#949CA9] w-1/2 max-sm:w-full  rounded-[3px]">
+                                        <select name="" id="" class="w-full">
+                                          <option value=""></option>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                        </select>
+                                        
+                                      </div>
+                                      <div class="text-black ps-2">/2</div>
+      
+                                      <div class="absolute top-2 right-[55%]">
+                                        
+                                      </div>
+                                     </div>
+                                    </td>
+                                    
+                                    <td data-label="Date" class="px-3 py-4">
+                                      
+                                    </td>
+                                  </tr>
+                                  <tr class="border-b dark:border-gray-200">
+                                    <td
+                                      data-label="Sale ID"
+                                      class="px-3 py-4 font-medium text-black whitespace-nowrap"
+                                    >
+                                    PAIRS
+                                    </td>
+                                    <td data-label="Venue" class="px-3 py-4 text-black">
+                                      Shortside Upper
+                                    </td>
+                                    <td data-label="Orders" class="px-3 py-4 text-black">
+                                      City
+                                    </td>
+                                    <td data-label="Tickets" class="px-3 py-4 text-black">
+                                      
+                                    </td>
+                                    <td data-label="Costs" class="px-3 py-4 text-black" >
+                                      85
+                                    </td>
+                                    <td data-label="Date" class="px-3 py-4 w-[15%]">
+                                     <div class="w-full flex items-center relative">
+                                      <div class="border-[1px] border-solid border-[#949CA9] w-1/2 max-sm:w-full  rounded-[3px]">
+                                        <select name="" id="" class="w-full">
+                                          <option value=""></option>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                        </select>
+                                        
+                                      </div>
+                                      <div class="text-black ps-2">/2</div>
+      
+                                      <div class="absolute top-2 right-[55%]">
+                                        
+                                      </div>
+                                     </div>
+                                    </td>
+                                    
+                                    <td data-label="Date" class="px-3 py-4">
+                                      
+                                    </td>
+                                  </tr>
+                                  
+                                </tbody>
+                              </table>
+                              <div class="w-full text-end mt-3"> 
+                                <button class="px-6 py-2 bg-[#5461AC] cursor-pointer  text-white text-lg font-medium rounded-[10px]">Order</button>
+                              </div>
+                            
+                          </td>
+                        </tr>
+                        
+    
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="grid justify-center w-full p-6 sm:flex sm:justify-start sm:items-center gap-2">
+    
+                  <nav class="flex items-center gap-x-1 w-full justify-end" aria-label="Pagination">
+                    <button type="button" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none border-neutral-400  dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Previous">
+                      <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6"></path>
+                      </svg>
+                      <span class="sr-only">Previous</span>
+                    </button>
+                    <div class="flex  items-center gap-x-1">
+                      <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border text-white py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-50 disabled:opacity-50 bg-[#5461AC] disabled:pointer-events-none border-neutral-400  " aria-current="page">1</button>
+                      <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-neutral-400  text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100  disabled:opacity-50 disabled:pointer-events-none   dark:hover:bg-white/10 dark:focus:bg-white/10">2</button>
+                      <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-transparent text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none  border-neutral-400   dark:hover:bg-white/10 dark:focus:bg-white/10">3</button>
+                      <div class="hs-tooltip inline-block">
+                        <button type="button" class="hs-tooltip-toggle group min-h-[38px] min-w-[38px] flex justify-center items-center text-gray-400 hover:text-blue-600 p-2 text-sm border border-neutral-400  rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:bg-white/10">
+                          <span class="group-hover:hidden text-xs">...</span>
+                          <svg class="group-hover:block hidden shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 17 5-5-5-5"></path>
+                            <path d="m13 17 5-5-5-5"></path>
+                          </svg>
+                          <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                            Next 4 pages
+                          </span>
+                        </button>
+                      </div>
+                      <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-neutral-400  text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none   dark:hover:bg-white/10 dark:focus:bg-white/10">8</button>
+                    </div>
+                    <button type="button" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none border-neutral-400   dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Next">
+                      <span class="sr-only">Next</span>
+                      <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6"></path>
+                      </svg>
+                    </button>
+                  </nav>
+                  <!-- End Pagination -->
+                
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="py-[20px] relative z-50">
+        <p class="text-center text-white text-[16px] px-20">
+          Seatease Copyright © 2024. All rights reserved.
+        </p>
+      </div>
+    </div>
+    <script>
+        document.querySelectorAll(".arrow-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            console.log("working");
+        
+            // Get the details row associated with the clicked button
+            const detailsRow = this.closest("tr").nextElementSibling;
+        
+            // Check if the clicked details row is currently hidden
+            const isHidden = detailsRow.classList.contains("hidden");
+        
+            // Close all open detail rows
+            document.querySelectorAll("tr.details-row").forEach((row) => {
+              row.classList.add("hidden");
+            });
+        
+            // If the clicked details row was hidden, open it
+            if (isHidden) {
+              detailsRow.classList.remove("hidden");
+            }
+          });
+        });
+            </script>
+    <script>
+      $(document).ready(function () {
+        function initializeDataTables(nestedTable) {
+          nestedTable.DataTable({
+            paging: false,
+            searching: false,
+            info: false,
+          });
+        }
+        function toggleNestedTable(button) {
+          const currentRow = $(button).closest("tr");
+          let nestedTableContainer = currentRow.next(".nested-table-container");
+
+          if (nestedTableContainer.length === 0) {
+            const nestedTableTemplate = $("#nestedTableTemplate").html();
+            currentRow.after(nestedTableTemplate);
+            nestedTableContainer = currentRow.next(".nested-table-container");
+            nestedTableContainer.removeClass("hidden");
+            const nestedTable = nestedTableContainer.find(".nested-table");
+            initializeDataTables(nestedTable);
+          } else {
+            nestedTableContainer.toggleClass("hidden");
+          }
+        }
+
+        $(document).on("click", ".toggle-btn", function () {
+          toggleNestedTable(this);
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      var options = {
+        chart: {
+          type: "area",
+          height: 100,
+          foreColor: "#999",
+          stacked: false,
+          dropShadow: {
+            enabled: false,
+            enabledSeries: [0],
+            top: -2,
+            left: 2,
+            blur: 5,
+            opacity: 0.06,
+          },
+        },
+        colors: ["#00E396", "#0090FF"],
+        stroke: {
+          curve: "smooth",
+          width: 3,
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        series: [
+          {
+            name: "Total Views",
+            data: generateDayWiseTimeSeries(0, 18),
+          },
+          {
+            name: "Unique Views",
+            data: generateDayWiseTimeSeries(1, 18),
+          },
+        ],
+        markers: {
+          size: 0,
+          strokeColor: "#fff",
+          strokeWidth: 3,
+          strokeOpacity: 1,
+          fillOpacity: 1,
+          hover: {
+            size: 6,
+          },
+        },
+        xaxis: {
+          type: "datetime",
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+        },
+        yaxis: {
+          labels: {
+            offsetX: 14,
+            offsetY: -5,
+          },
+          tooltip: {
+            enabled: false,
+          },
+        },
+        grid: {
+          padding: {
+            left: -5,
+            right: 5,
+          },
+        },
+        tooltip: {
+          x: {
+            format: "dd MMM yyyy",
+          },
+        },
+
+        fill: {
+          type: "solid",
+          fillOpacity: 0.7,
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#timeline-chart"),
+        options
+      );
+
+      chart.render();
+
+      function generateDayWiseTimeSeries(s, count) {
+        var values = [
+          [4, 3, 10, 9, 29, 19, 25, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5],
+          [2, 3, 8, 7, 22, 16, 23, 7, 11, 5, 12, 5, 10, 4, 15, 2, 6, 2],
+        ];
+        var i = 0;
+        var series = [];
+        var x = new Date("11 Nov 2012").getTime();
+        while (i < count) {
+          series.push([x, values[s][i]]);
+          x += 86400000;
+          i++;
+        }
+        return series;
+      }
+
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>

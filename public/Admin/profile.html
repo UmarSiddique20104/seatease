@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../output.css" />
+    <title>Profile</title>
+    <style>
+      .tt-select {
+        position: relative;
+        height: auto;
+        padding: 0px;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+
+      .tt-select select {
+        display: none;
+      }
+
+      .select-selected {
+        background-color: #fff;
+      }
+
+      .select-selected:after {
+        position: absolute;
+        content: "";
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+      }
+
+      .select-selected:before {
+        position: absolute;
+        content: "";
+        top: 50px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: transparent transparent #949698 transparent;
+        transform: rotate(180deg);
+      }
+
+      .select-selected.select-arrow-active:before {
+        border: none;
+      }
+
+      .select-selected.select-arrow-active:after {
+        border-color: transparent transparent #949698 transparent;
+        top: 0px;
+      }
+
+      .select-items div,
+      .select-selected {
+        color: #9ca3af;
+        padding: 8px 16px;
+        border: 1px solid  #e5e7eb ;
+        border-radius: 8px;
+        padding: 18px;
+        cursor: pointer;
+      }
+
+      .select-items {
+        position: absolute;
+        background-color: #ffffff;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        max-height: 150px;
+        overflow-y: auto;
+      }
+
+      .select-hide {
+        display: none;
+      }
+
+      .select-items div {
+        margin: 5px; 
+      }
+
+      .select-items div:hover,
+      .same-as-selected {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      /* Custom scrollbar styling */
+      .select-items::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      .select-items::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      .select-items::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      .select-items::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div
+      class="relative h-full min-h-svh pb-10 bg-[#24205A] backdrop-brightness-50"
+    >
+      <div
+        class="absolute top-0 left-0 w-1/2 h-full bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-10"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-1/2 h-full rotate-180 bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-10"
+      ></div>
+      <div class="font-Poppins relative z-20">
+        <nav
+          class="py-[20px] flex justify-between items-center max-md:flex-col max-lg:px-[40px] lg:px-[80px]"
+        >
+          <div class="z-50 cursor-pointer">
+            <a href="./Dashboard.html"
+              ><img src="/assests/Logo.png" alt=""
+            /></a>
+          </div>
+          <div class="flex items-center gap-[30px]">
+            <div>
+              <ul class="flex items-center gap-[30px]">
+                <li class="font-medium text-xl text-white z-20">
+                  <a href="./Events.html">Events</a>
+                </li>
+                <li class="font-medium text-xl text-white">Orders</li>
+              </ul>
+            </div>
+
+            <div class="flex items-center gap-[8px]">
+              <div class="min-h-10 min-w-10">
+                <img
+                  src="/assests/Ellipse 18.png"
+                  alt="profile"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <div>
+                <div class="py-1">
+                  <p class="font-semibold text-white text-[16px] leading-none">
+                    Tynisha Obey
+                  </p>
+                </div>
+                <div class="py-1">
+                  <p class="font-normal text-white text-[14px] leading-none">
+                    KATRING
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="h-full px-10 max-sm:px-3  relative w-full font-Poppins">
+        <div
+          class="w-full h-full rounded-[40px] overflow-hidden bg-white py-8 max-sm:py-5 max-sm:px-2 px-8"
+        >
+          <div class="md:absolute max-md:px-2 md:top-8 max-md:top-4 z-50">
+            <svg
+              class="cursor-pointer"
+              xmlns="http://www.w3.org/2000/svg"
+              width="45"
+              height="45"
+              viewBox="0 0 45 45"
+              fill="none"
+            >
+              <path
+                opacity="0.35"
+                d="M22.5 41.25C32.8553 41.25 41.25 32.8553 41.25 22.5C41.25 12.1447 32.8553 3.75 22.5 3.75C12.1447 3.75 3.75 12.1447 3.75 22.5C3.75 32.8553 12.1447 41.25 22.5 41.25Z"
+                fill="#949CA9"
+              />
+              <path
+                d="M15 24.375C15 24.375 31.2225 24.375 31.875 24.375C32.91 24.375 33.75 23.535 33.75 22.5C33.75 21.465 32.91 20.625 31.875 20.625C31.2225 20.625 15 20.625 15 20.625V24.375Z"
+                fill="#949CA9"
+              />
+              <path
+                d="M22.5005 31.875C22.0205 31.875 21.5405 31.6913 21.1748 31.3256L13.6748 23.8256C12.9417 23.0925 12.9417 21.9075 13.6748 21.1744L21.1748 13.6744C21.908 12.9413 23.093 12.9413 23.8261 13.6744C24.5592 14.4075 24.5592 15.5925 23.8261 16.3256L17.6517 22.5L23.8261 28.6744C24.5592 29.4075 24.5592 30.5925 23.8261 31.3256C23.4605 31.6913 22.9805 31.875 22.5005 31.875Z"
+                fill="#949CA9"
+              />
+            </svg>
+          </div>
+          <div
+            class="w-full flex flex-row max-lg:flex-col gap-4 h-full relative z-20 bg-transparent md:px-20 max-md:px-6 max-md:pt-4 max-sm:px-4"
+          >
+            <div
+              class="grid grid-cols-12 w-full h-fit justify-evenly gap-6 font-Poppins"
+            >
+              <div class="flex gap-3 w-full h-full col-span-12">
+                <div class="flex gap-3 w-full h-full col-span-12">
+                  <div class="">
+                    <div class="min-h-24 min-w-24">
+                      <img
+                        src="/assests/Ellipse 11.png"
+                        alt=""
+                        class="object-cover w-full h-full img-fluid"
+                      />
+                    </div>
+                  </div>
+                  <div class="w-full flex flex-col justify-center">
+                    <div
+                      class="text-[26.273px] max-md:text-[16.273px] max-lg:text-[20.273px] font-medium"
+                    >
+                      Tynisha Obey
+                    </div>
+                    <div
+                      class="text-[21.018px] max-md:text-[12.273px] max-lg:text-[14.273px] font-normal text-gray-400"
+                    >
+                      KATRING
+                    </div>
+                  </div>
+                </div>
+                <div class="h-full w-full items-center flex justify-end">
+                  <div class="h-fit">
+                    <button
+                      class="py-[18px] px-[53px] max-md:px-[33px] max-sm:p-[10px] max h-fit font-medium bg-[#5461AC] rounded-[7px] text-white max-sm:text-sm max-sm:font-normal"
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="md:col-span-6 max-md:col-span-12">
+                <div class="flex flex-col gap-[]">
+                  <label for="Email" class="font-medium"> First Name</label>
+                  <input
+                    type="text"
+                    class="p-[18px] border rounded-[8px] border-[#E8E9EA]"
+                    placeholder="First Name"
+                    name=""
+                    id=""
+                  />
+                </div>
+              </div>
+              <div class="md:col-span-6 max-md:col-span-12">
+                <div class="flex flex-col">
+                  <label for="Email" class="font-medium"> Last Name</label>
+                  <input
+                    type="text"
+                    class="p-[18px] border rounded-[8px] border-[#E8E9EA]"
+                    placeholder="Last Name"
+                    name=""
+                    id=""
+                  />
+                </div>
+              </div>
+              <div class="md:col-span-6 max-md:col-span-12">
+                <div class="flex flex-col tt-select">
+                  <label for="gender-select" class="font-medium">Gender</label>
+                  <select
+                    id="gender-select"
+                    class="p-[18px]  flex flex-col gap-4  items-center justify-between gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    onchange="styleOptions()"
+                  >
+                    <option
+                      value="male"
+                      class="p-[18px] inline-flex items-center justify-between gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    >
+                      Male
+                    </option>
+                   
+                    <option
+                      value="female"
+                      class="p-[18px] inline-flex items-center justify-between gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    >
+                      Female
+                    </option>
+                    <option
+                      value="other"
+                      class="p-[18px] inline-flex items-center justify-between gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    >
+                      Other
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="md:col-span-6 max-md:col-span-12">
+                <div class="flex flex-col tt-select">
+                  <label for="gender-select" class="font-medium">Language</label>
+                  <select
+                    id="gender-select"
+                    class="p-[18px]  flex flex-col gap-4  items-center justify-between gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    onchange="styleOptions()"
+                  >
+                    <option
+                      value="male"
+                      class="p-[18px] inline-flex items-center justify-between gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    >
+                      English
+                    </option>
+                   
+                    <option
+                      value="female"
+                      class="p-[18px] inline-flex items-center justify-between gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    >
+                      Urdu
+                    </option>
+                    <option
+                      value="other"
+                      class="p-[18px] inline-flex items-center justify-between gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    >
+                      Japanes
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-span-12 font-Poppins">
+                <div class="flex flex-col gap-[26.5px]">
+                  <p
+                    class="font-medium text-black text-[24px] max-md:text-[16px] leading-none"
+                  >
+                    My Email Address
+                  </p>
+                  <div class="flex items-center gap-[15px]">
+                    <div class="bg-[#e6e8f3] p-3 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="31"
+                        height="31"
+                        viewBox="0 0 31 31"
+                        fill="none"
+                      >
+                        <path
+                          opacity="0.35"
+                          d="M24.5423 25.8333H6.45898C4.31869 25.8333 2.58398 24.0986 2.58398 21.9583V9.04167C2.58398 6.90138 4.31869 5.16667 6.45898 5.16667H24.5423C26.6826 5.16667 28.4173 6.90138 28.4173 9.04167V21.9583C28.4173 24.0986 26.6826 25.8333 24.5423 25.8333Z"
+                          fill="#5461AC"
+                        />
+                        <path
+                          d="M12.8424 15.1965L2.58398 9.04167C2.58398 6.90138 4.31869 5.16667 6.45898 5.16667H24.5423C26.6826 5.16667 28.4173 6.90138 28.4173 9.04167L18.1589 15.1965C16.5224 16.1781 14.4789 16.1781 12.8424 15.1965Z"
+                          fill="#5461AC"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="py-1">
+                        <p
+                          class="font-normal text-black text-[22px] max-md:text-[14px] leading-none"
+                        >
+                          tynishaobey@gmail.com
+                        </p>
+                      </div>
+                      <div class="py-2">
+                        <p
+                          class="font-normal text-[#949CA9] text-[14px] max-md:text-[10px] leading-none"
+                        >
+                          1 month ago
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="w-full flex justify-start h-full">
+                        <button
+                          class="py-[18px] px-[53px] max-md:px-[33px] h-full font-medium bg-[#5461AC] rounded-[7px] text-white"
+                        >
+                        +  Add Email Address
+                        </button>
+                      </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="py-[20px] relative z-50">
+        <p class="text-center text-white text-[16px] px-20">
+          Seatease Copyright © 2024. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function toggleDropdown() {
+        var dropdownMenu = document.getElementById("dropdown-menu");
+        dropdownMenu.classList.toggle("hidden");
+        dropdownMenu.classList.toggle("opacity-0");
+        dropdownMenu.classList.toggle("opacity-100");
+      }
+    </script>
+    <script>
+      var x, i, j, selElmnt, a, b, c;
+      x = document.getElementsByClassName("tt-select");
+
+      for (i = 0; i < x.length; i++) {
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        a = document.createElement("DIV");
+        a.setAttribute("class", "select-selected");
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+        x[i].appendChild(a);
+        b = document.createElement("DIV");
+        b.setAttribute("class", "select-items select-hide");
+        for (j = 0; j < selElmnt.length; j++) {
+          /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+          c = document.createElement("DIV");
+          c.innerHTML = selElmnt.options[j].innerHTML;
+          c.addEventListener("click", function (e) {
+            var y, i, k, s, h;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < s.length; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                for (k = 0; k < y.length; k++) {
+                  y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+              }
+            }
+            h.click();
+          });
+          b.appendChild(c);
+        }
+        x[i].appendChild(b);
+        a.addEventListener("click", function (e) {
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+      }
+      function closeAllSelect(elmnt) {
+        var x,
+          y,
+          i,
+          arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        for (i = 0; i < y.length; i++) {
+          if (elmnt == y[i]) {
+            arrNo.push(i);
+          } else {
+            y[i].classList.remove("select-arrow-active");
+          }
+        }
+        for (i = 0; i < x.length; i++) {
+          if (arrNo.indexOf(i)) {
+            x[i].classList.add("select-hide");
+          }
+        }
+      }
+      document.addEventListener("click", closeAllSelect);
+    </script>
+  </body>
+</html>

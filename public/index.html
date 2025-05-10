@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <title>INDEX</title>
+  </head>
+  <body>
+    <div class="relative w-full overflow-hidden h-screen">
+      <div
+        class="absolute max-sm:hidden top-0 left-0 w-1/2 h-full bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat"
+      ></div>
+      <div
+        class="absolute max-sm:hidden bottom-0 right-0 w-1/2 h-full rotate-180 bg-[url('/src/assests/loginbg.png')] bg-contain bg-no-repeat z-30"
+      ></div>
+      <div class="w-full h-full max-sm:hidden">
+        <div class="absolute top-0 left-0">
+          <img src="/src/assests/logosn.png" alt="" />
+        </div>
+        <div class="absolute bottom-0 right-0 rotate-180">
+          <img src="/src/assests/logosn.png" alt="" />
+        </div>
+      </div>
+      <div
+        class="absolute z-50 top-0 overflow-auto h-full w-full flex items-center justify-center"
+      >
+        <div
+          class="bg-white flex flex-col justify-center md:gap-[15.5px] 2xl:h-auto sm:shadow-2xl 2xl:w-[665.185px] w-[565.185px] max-md:h-[90%] sm:p-[20px] max-sm:p-[20px] font-Poppins"
+        >
+          <div class="w-full flex justify-center">
+            <img class="w-[300px]" src="/src/assests/loginlogo.png" alt="" />
+          </div>
+          <div
+            class="font-Poppins h-full flex flex-col justify-evenly md:gap-[0px] sm:p-[20px] max-sm:p-[10px] max-sm:gap-[30px]"
+          >
+            <div class="font-Poppins">
+              <div class="font-semibold text-[32px] flex justify-center">
+                Login
+              </div>
+              <p class="text-[16px] flex justify-center text-[#949CA9]">
+                Enter details to sign in your account
+              </p>
+            </div>
+            <div class="flex flex-col gap-[23.5px]">
+              <div class="flex flex-col">
+                <label for="Email" class="font-medium"> Email</label>
+                <input
+                  type="text"
+                  class="p-[18px] border rounded-[8px] border-[#E8E9EA]"
+                  placeholder="Enter the Email"
+                  name=""
+                  id=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <label for="Email" class="font-medium"> Password</label>
+                <input
+                  type="text"
+                  class="p-[18px] border rounded-[8px]"
+                  placeholder="Enter the Email"
+                  name=""
+                  id=""
+                />
+              </div>
+              <div class="flex justify-end text-[#5461AC]">
+                Forget password?
+              </div>
+              <div class="w-full">
+                <button
+                  id="loginBtn"
+                  class="py-[18px] px-[53px] w-full font-medium bg-[#5461AC] rounded-[7px] text-white"
+                >
+                  Sign In
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("loginBtn")
+        .addEventListener("click", function () {
+          // Example: Always redirect to Admin Dashboard
+          window.location.href = "User/Dashboard.html";
+
+          // OR if you want to go to User Dashboard instead:
+          // window.location.href = "User/Dashboard.html";
+        });
+    </script>
+  </body>
+</html>

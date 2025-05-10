@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../output.css" />
+    <link rel="stylesheet" href="../../lib/datatables/dataTables.css" />
+
+    <title>DashBoard</title>
+  </head>
+  <body>
+    <div class="bg-[#24205A] relative h-full min-h-svh">
+      <!-- bg-[url('../../src/assests/loginbg.png')] bg-no-repeat  -->
+      <div class="absolute top-0 left-0">
+        <!-- <img src="../../src/assests/loginbg.png" class="h-svh" alt=".." /> -->
+      </div>
+
+      <nav
+        class="py-[20px] flex justify-between items-center max-md:flex-col max-lg:px-[40px] lg:px-[80px]"
+      >
+        <div class="z-50 cursor-pointer">
+          <a href="./Dashboard.html"><img src="/assests/Logo.png" alt="" /></a>
+        </div>
+        <div class="flex items-center gap-[30px] ">
+          <div>
+            <ul class="flex items-center gap-4 max-sm:gap-2">
+              <li class="font-medium text-xl text-white z-20">
+                <a href="./Events.html">Events</a>
+              </li>
+              <li class="font-medium text-xl text-white">
+
+                <li class="font-medium text-xl text-white z-20 cursor-pointer ">
+                    <a href="./Order.html" class="flex items-center gap-2 ">
+                        <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="8"
+                          height="9"
+                          viewBox="0 0 8 9"
+                          fill="none"
+                        >
+                          <circle cx="4" cy="4.10278" r="4" fill="#9FAAED" />
+                        </svg>
+                      </div>
+                      Orders</a>
+                  </li>
+            </li>
+            </ul>
+          </div>
+
+          <div class="flex items-center gap-2 max-sm:gap-1">
+            <div class="min-h-11 min-w-11 ">
+              <img src="/assests/Avatar.png" class="h-w-full object-cover w-full" alt="profile" />
+            </div>
+            <div>
+              <div class="py-1">
+                <p class="font-semibold text-white text-[16px] max-sm:text-[14px] leading-none">
+                  Tynisha Obey
+                </p>
+              </div>
+              <div class="py-1">
+                <p class="font-normal text-white text-[14px] max-sm:text-[12px] leading-none">
+                  KATRING
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div
+        class="py-[30px] bg-white rounded-[40px] mx-[25px] px-[55px] max-xl:px-[20px] max-xl:py-[20px] flex flex-col gap-[35px]"
+      >
+        <!--//////////////////////////////////  SEARCH FEILDS AND OTHER THINGS  /////////////////////////////  -->
+        
+
+        <div class="flex items-center justify-between max-md:flex-col max-md:gap-4">
+
+           <div class=" flex items-center max-md:flex-col max-md:gap-4">
+            <div class="mx-3 max-md:w-full z-20 cursor-pointer ">
+                <a href="./Dashboard.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path opacity="0.35" d="M22.5 41.25C32.8553 41.25 41.25 32.8553 41.25 22.5C41.25 12.1447 32.8553 3.75 22.5 3.75C12.1447 3.75 3.75 12.1447 3.75 22.5C3.75 32.8553 12.1447 41.25 22.5 41.25Z" fill="#949CA9"/>
+                        <path d="M15 24.375C15 24.375 31.2225 24.375 31.875 24.375C32.91 24.375 33.75 23.535 33.75 22.5C33.75 21.465 32.91 20.625 31.875 20.625C31.2225 20.625 15 20.625 15 20.625V24.375Z" fill="#949CA9"/>
+                        <path d="M22.5005 31.875C22.0205 31.875 21.5405 31.6912 21.1748 31.3256L13.6748 23.8256C12.9417 23.0925 12.9417 21.9075 13.6748 21.1744L21.1748 13.6744C21.908 12.9412 23.093 12.9412 23.8261 13.6744C24.5592 14.4075 24.5592 15.5925 23.8261 16.3256L17.6517 22.5L23.8261 28.6744C24.5592 29.4075 24.5592 30.5925 23.8261 31.3256C23.4605 31.6912 22.9805 31.875 22.5005 31.875Z" fill="#949CA9"/>
+                        </svg>
+                </a>
+            </div>
+          <div class="relative w-1/2 max-md:w-full">
+            <input
+            type="search"
+            class="w-full py-[18px] ps-9 pe-3 border-[1px] rounded-[10px] border-solid border-[#949CA9]"
+            placeholder="Search by event"
+          />
+          <svg
+            class="absolute top-[20px] left-2"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <circle
+              cx="9.78614"
+              cy="9.78614"
+              r="8.23951"
+              stroke="#949CA9"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15.5168 15.9448L18.7472 19.1668"
+              stroke="#949CA9"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              />
+            </svg>
+        </div>
+        <!--//////////////////////////////////  toggle button ////////////////////////////////////  -->
+
+        <div class="mx-3">
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" class="sr-only peer">
+                <div class="relative w-11 h-6 bg-[#6FC176]   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                <span class="ms-3 text-sm font-medium text-gray-900">Include past</span>
+              </label>
+        </div>
+
+           </div>
+           <div class="max-md:w-full z-20">
+            <button class="bg-[#6FC176] max-md:w-full  p-[18px] text-white rounded-[10px] border-[#949ca940] border-1 border-solid flex cursor-pointer ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M11.9854 2.98644C11.7204 2.99032 11.4677 3.09927 11.283 3.28934C11.0982 3.47941 10.9965 3.73506 11.0001 4.00011V13.586L9.70712 12.2931C9.61498 12.1971 9.50461 12.1205 9.38248 12.0677C9.26035 12.0149 9.12892 11.987 8.99588 11.9857C8.86284 11.9843 8.73086 12.0095 8.60768 12.0598C8.48451 12.1101 8.3726 12.1845 8.27852 12.2785C8.18444 12.3726 8.11008 12.4845 8.05979 12.6077C8.0095 12.7309 7.9843 12.8629 7.98565 12.9959C7.98701 13.1289 8.01489 13.2604 8.06768 13.3825C8.12046 13.5046 8.19709 13.615 8.29306 13.7071L11.2931 16.7071C11.4806 16.8946 11.7349 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7071 16.7071L15.7071 13.7071C15.8031 13.615 15.8797 13.5046 15.9325 13.3825C15.9853 13.2604 16.0132 13.1289 16.0145 12.9959C16.0159 12.8629 15.9907 12.7309 15.9404 12.6077C15.8901 12.4845 15.8157 12.3726 15.7217 12.2785C15.6276 12.1845 15.5157 12.1101 15.3925 12.0598C15.2693 12.0095 15.1373 11.9843 15.0043 11.9857C14.8713 11.987 14.7398 12.0149 14.6177 12.0677C14.4956 12.1205 14.3852 12.1971 14.2931 12.2931L13.0001 13.586V4.00011C13.0019 3.8664 12.9769 3.73369 12.9266 3.60981C12.8762 3.48594 12.8015 3.37342 12.7069 3.27891C12.6123 3.1844 12.4997 3.10983 12.3758 3.05959C12.2519 3.00935 12.1191 2.98448 11.9854 2.98644ZM3.98545 15.4864C3.7204 15.4903 3.46774 15.5993 3.28298 15.7893C3.09821 15.9794 2.99647 16.2351 3.00009 16.5001V18.0001C3.00009 19.6451 4.35508 21.0001 6.00009 21.0001H18.0001C19.6451 21.0001 21.0001 19.6451 21.0001 18.0001V16.5001C21.002 16.3676 20.9775 16.236 20.9281 16.1131C20.8787 15.9901 20.8053 15.8782 20.7123 15.7838C20.6192 15.6894 20.5083 15.6145 20.3861 15.5634C20.2638 15.5122 20.1326 15.4859 20.0001 15.4859C19.8676 15.4859 19.7364 15.5122 19.6141 15.5634C19.4918 15.6145 19.381 15.6894 19.2879 15.7838C19.1949 15.8782 19.1215 15.9901 19.0721 16.1131C19.0227 16.236 18.9982 16.3676 19.0001 16.5001V18.0001C19.0001 18.5641 18.5641 19.0001 18.0001 19.0001H6.00009C5.43611 19.0001 5.00009 18.5641 5.00009 18.0001V16.5001C5.00192 16.3664 4.97692 16.2337 4.92656 16.1098C4.87621 15.9859 4.80152 15.8734 4.70692 15.7789C4.61233 15.6844 4.49973 15.6098 4.37581 15.5596C4.25189 15.5094 4.11915 15.4845 3.98545 15.4864Z" fill="white"/>
+              </svg>
+              <p class="m-0 p-0">Download CSV</p>
+             </button>
+           </div>
+
+        </div>
+        <!--//////////////////////////////////  table ////////////////////////////////////  -->
+
+        <div class="w-full z-20">
+
+          <div
+            class="relative  overflow-x-auto border-1 border-solid boder-[#949CA9]  sm:rounded-lg"
+          >
+            <div class="">
+              <table
+                class="w-full text-sm text-left rounded-t-[12px]   rtl:text-right  text-gray-500 dark:text-gray-400"
+              >
+                <thead
+                  class="text-[14px]  font-normal  text-white  "
+                >
+                  <tr class=" bg-[#5461AC]  rounded-t-[18px]">
+                    <th scope="col" class="px-3 rounded-l-[12px] py-3 font-medium">
+                      Event Name
+                    </th>
+                    <th scope="col" class="px-3 py-3 font-medium">Venue</th>
+                    <th scope="col" class="px-3 py-3 font-medium">
+                      Orders
+                    </th>
+                    <th scope="col" class="px-3 py-3 font-medium">
+                      Tickets
+                    </th>
+                    <th scope="col" class="px-3 py-3 font-medium">Costs</th>
+                    <th scope="col" class="px-3 py-3 font-medium  rounded-r-[12px]">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b dark:border-gray-200">
+                    <td
+                      data-label="Event Name"
+                      class="px-3 py-3 font-medium text-gray-900 whitespace-nowrap"
+                    >
+                      Community Shield 2024
+                    </td>
+                    <td data-label="Venue" class="px-3 py-3 text-gray-900 font-medium">Anfield</td>
+                    <td data-label="Orders" class="px-3 py-3 text-[#5461AC] font-medium">20</td>
+                    <td data-label="Tickets" class="px-3 py-3  text-gray-900 font-medium flex gap-1" >
+                      <div>
+                        <span class="text-[#5461AC]">8</span> Tickets
+                      </div>
+                    </td>
+                    <td data-label="Costs" class="px-3 py-3 text-gray-900 font-medium">Â£2,490.00</td>
+                    <td data-label="Date" class="px-3 py-3 text-gray-900 font-medium">
+                      <div
+                        class="justify-evenly flex flex-row max-md:flex-row md:items-center max-md:items-end gap-2"
+                      >
+                        11/08/24
+                        <button
+                          class="arrow-btn bg-[#5461AC] cursor-pointer gap-1 text-white font-normal py-[12.5px] px-6 rounded inline-flex items-center z-20"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="15"
+                            height="10"
+                            viewBox="0 0 15 10"
+                            fill="none"
+                          >
+                            <path
+                              d="M7.31317 9.85383C7.5085 10.0492 7.82483 10.0492 8.02017 9.85383L14.8535 3.0205C15.0488 2.82517 15.0488 2.50883 14.8535 2.3135L12.6868 0.146833C12.4915 -0.0485003 12.1752 -0.0485003 11.9798 0.146833L7.66683 4.45983L3.35383 0.1465C3.1585 -0.0488339 2.84217 -0.0488339 2.64683 0.146499L0.480165 2.31317C0.382166 2.41083 0.3335 2.53883 0.3335 2.66683C0.3335 2.79483 0.382166 2.92283 0.479833 3.0205L7.31317 9.85383Z"
+                              fill="white"
+                            />
+                          </svg>
+                        </button>
+                        
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="details-row hidden">
+                    <td colspan="6" class="px-3 py-4">
+                        <table
+                          class="w-full text-sm text-left  rtl:text-right text-gray-500 dark:text-gray-400"
+                        >
+                          <thead
+                            class="text-[14px] font-normal text-white  bg-[#9FAAED]"
+                          >
+                            <tr>
+                              <th scope="col" class="px-3 py-3 font-medium rounded-l-[12px]">
+                                <div class="flex gap-2 items-center">
+                                  Sale ID
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="21"
+                                    viewBox="0 0 20 21"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z"
+                                      fill="white"
+                                    />
+                                  </svg>
+                                </div>
+                              </th>
+                              <th scope="col" class="px-3 py-3 font-medium">
+                                Qty
+                              </th>
+                              <th scope="col" class="px-3 py-3 font-medium">
+                                <div class="flex gap-2 items-center">
+                                  Section<svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="21"
+                                    viewBox="0 0 20 21"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z"
+                                      fill="white"
+                                    />
+                                  </svg>
+                                </div>
+                              </th>
+                              <th scope="col" class="px-3 py-3 font-medium">
+                                Fan Side
+                              </th>
+                              <th scope="col" class="px-3 py-3 font-medium">
+                                Block
+                              </th>
+                              <th scope="col" class="px-3 py-3 font-medium">
+                                Price
+                              </th>
+                              <th scope="col" class="px-3 py-3 font-medium">
+                                <div class="flex gap-2 items-center">
+                                  Split<svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="21"
+                                    viewBox="0 0 20 21"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z"
+                                      fill="white"
+                                    />
+                                  </svg>
+                                </div>
+                                <th scope="col" class="px-3 py-3 font-medium">
+                                  Note
+                                </th>
+                                <th scope="col" class="px-3 py-3 font-medium">
+                                  <div class="flex gap-2 items-center"> Ordered at<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                    <path d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z" fill="white"/>
+                                  </svg></div>
+                                </th>
+                              </th>
+                              <th scope="col" class="px-3 py-3 font-medium">
+                                <div class="flex gap-2 items-center">Sent Tickets<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                  <path d="M7.91667 12.167V17.3753C7.91667 17.6095 8.0475 17.8241 8.25542 17.9312C8.34583 17.9774 8.44375 18.0003 8.54167 18.0003C8.66958 18.0003 8.79708 17.9612 8.905 17.8841L11.8217 15.8008C11.9858 15.6833 12.0833 15.4937 12.0833 15.292V12.167H7.91667ZM16.4583 3.00034H3.54167C2.9675 3.00034 2.5 3.46784 2.5 4.042V5.32909C2.5 6.29284 2.93417 7.18742 3.69083 7.78367L7.66792 10.917H12.3317L16.3087 7.78367C17.0658 7.18742 17.5 6.29242 17.5 5.32909V4.042C17.5 3.46784 17.0325 3.00034 16.4583 3.00034Z" fill="white"/>
+                                </svg></div>
+                              </th>
+                            </th>
+                            <th scope="col" class="px-3 py-3 font-medium rounded-r-[12px]">
+                              Options
+                            </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="border-b border-gray-200">
+                              <td
+                                data-label="Sale ID"
+                                class="px-3 py-4 font-medium text-black  whitespace-nowrap"
+                              >
+                              12123
+                              </td>
+                              <td data-label="Venue" class="px-3 py-4 text-black">
+                                2
+                              </td>
+                              <td data-label="Orders" class="px-3 py-4 text-black">
+                                Home fans
+                              </td>
+                              <td data-label="Tickets" class="px-3 py-4 text-black">
+                                Â£200 
+                              </td>
+                              <td data-label="Costs" class="px-3 py-4 text-black">
+                                PAIRS
+                              </td>
+                              <td data-label="Date" class="px-3 py-4 text-black">
+                                417/07 - 9:39 AM
+                              </td>
+                              <td data-label="Date" class="px-3 py-4 text-black">
+                                Not sent yet
+                              </td>
+                              <td data-label="Date" class="px-3 py-4 text-black">
+                                Not sent yet
+                              </td>
+                              <td data-label="Date" class="px-3 py-4 text-black">
+                                Not sent yet
+                              </td>
+                              <td data-label="Date" class="px-3 py-4 text-black">
+                                Not sent yet
+                              </td>
+                              <td data-label="Date" class="px-3 py-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                  <path d="M8.33333 2.60451C6.32292 2.60451 4.6875 4.23992 4.6875 6.25034C4.6875 8.26076 6.32292 9.89617 8.33333 9.89617C10.3437 9.89617 11.9792 8.26076 11.9792 6.25034C11.9792 4.23992 10.3437 2.60451 8.33333 2.60451ZM16.6667 2.60451C14.6562 2.60451 13.0208 4.23992 13.0208 6.25034C13.0208 8.26076 14.6562 9.89617 16.6667 9.89617C18.6771 9.89617 20.3125 8.26076 20.3125 6.25034C20.3125 4.23992 18.6771 2.60451 16.6667 2.60451ZM4.94792 10.9378C3.94271 10.9378 3.125 11.7555 3.125 12.7608V17.7087C3.125 20.5805 5.46146 22.917 8.33333 22.917C9.65729 22.917 10.8641 22.4169 11.7839 21.5997C10.9307 20.5309 10.4167 19.1795 10.4167 17.7087V12.7608C10.4167 12.0691 10.6639 11.4337 11.0738 10.9378H4.94792ZM13.2812 10.9378C12.276 10.9378 11.4583 11.7555 11.4583 12.7608V17.7087C11.4583 20.5805 13.7948 22.917 16.6667 22.917C19.5385 22.917 21.875 20.5805 21.875 17.7087V12.7608C21.875 11.7555 21.0573 10.9378 20.0521 10.9378H13.2812Z" fill="#5461AC"/>
+                                </svg>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      
+                    </td>
+                  </tr>
+                  
+                  
+                  
+                  
+                </tbody>
+              </table>
+            </div>
+
+
+            <div class="grid justify-center w-full p-6 sm:flex sm:justify-start sm:items-center gap-2">
+
+              <nav class="flex items-center gap-x-1 w-full justify-end" aria-label="Pagination">
+                <button type="button" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none border-neutral-400  dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Previous">
+                  <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6"></path>
+                  </svg>
+                  <span class="sr-only">Previous</span>
+                </button>
+                <div class="flex  items-center gap-x-1">
+                  <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border text-white py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-50 disabled:opacity-50 bg-[#5461AC] disabled:pointer-events-none border-neutral-400  " aria-current="page">1</button>
+                  <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-neutral-400  text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100  disabled:opacity-50 disabled:pointer-events-none   dark:hover:bg-white/10 dark:focus:bg-white/10">2</button>
+                  <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-transparent text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none  border-neutral-400   dark:hover:bg-white/10 dark:focus:bg-white/10">3</button>
+                  <div class="hs-tooltip inline-block">
+                    <button type="button" class="hs-tooltip-toggle group min-h-[38px] min-w-[38px] flex justify-center items-center text-gray-400 hover:text-blue-600 p-2 text-sm border border-neutral-400  rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:bg-white/10">
+                      <span class="group-hover:hidden text-xs">...</span>
+                      <svg class="group-hover:block hidden shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 17 5-5-5-5"></path>
+                        <path d="m13 17 5-5-5-5"></path>
+                      </svg>
+                      <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                        Next 4 pages
+                      </span>
+                    </button>
+                  </div>
+                  <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-neutral-400  text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-full focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none   dark:hover:bg-white/10 dark:focus:bg-white/10">8</button>
+                </div>
+                <button type="button" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none border-neutral-400   dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Next">
+                  <span class="sr-only">Next</span>
+                  <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </button>
+              </nav>
+              <!-- End Pagination -->
+            
+            
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- /////////////////// copyright lincence line /////////////////////////////-->
+
+      <div class="py-[20px]">
+        <p class="text-center text-white text-[16px] font-semibold">
+          Seatease Copyright © 2024. All rights reserved.
+        </p>
+      </div>
+
+      <!-- ///////////////// IMG /////////////////  -->
+      <div class="absolute bottom-0 right-0 rotate-180">
+        <img src="../../src/assests/loginbg.png" class="h-svh" alt=".." />
+      </div>
+    </div>
+
+ 
+    <script>
+        document.querySelectorAll(".arrow-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            console.log("working");
+        
+            // Get the details row associated with the clicked button
+            const detailsRow = this.closest("tr").nextElementSibling;
+        
+            // Check if the clicked details row is currently hidden
+            const isHidden = detailsRow.classList.contains("hidden");
+        
+            // Close all open detail rows
+            document.querySelectorAll("tr.details-row").forEach((row) => {
+              row.classList.add("hidden");
+            });
+        
+            // If the clicked details row was hidden, open it
+            if (isHidden) {
+              detailsRow.classList.remove("hidden");
+            }
+          });
+        });
+            </script>
+
+
+  </body>
+</html>
